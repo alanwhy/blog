@@ -13,7 +13,6 @@
 
 ![q21-1.png](https://upload-images.jianshu.io/upload_images/12877063-9a221a80b55408d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-
 从上面这个图上，我们可以看到，浏览器渲染过程如下：
 
 1. 解析 HTML，生成 DOM 树，解析 CSS，生成 CSSOM 树
@@ -25,7 +24,6 @@
 #### 生成渲染树
 
 ![q21-2.png](https://upload-images.jianshu.io/upload_images/12877063-548621a19025d2a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
 
 为了构建渲染树，浏览器主要完成了以下工作：
 

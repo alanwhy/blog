@@ -1,3 +1,12 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:28
+ * @LastEditTime: 2022-07-06 09:58:54
+ * @LastEditors: wuhaoyuan
+ * @Description:
+ * @FilePath: /blog/web功能代码/遍历dom树.md
+-->
+
 ```
 function traversal(node) {
     //对node的处理
@@ -17,5 +26,4 @@ function traversal(node) {
 }
 ```
 
-
-> 原文链接：[如何遍历一个dom树](https://github.com/airuikun/Weekly-FE-Interview/issues/4)
+> 原文链接：[如何遍历一个 dom 树](https://github.com/airuikun/Weekly-FE-Interview/issues/4)

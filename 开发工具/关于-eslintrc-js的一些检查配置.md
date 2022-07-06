@@ -242,4 +242,4 @@ module.exports = {
 };
 ```
 
-> 原文链接： [从0到1使用VUE-CLI3开发实战(六)：这是一个有代码洁癖的项目](https://segmentfault.com/a/1190000018033315)
+> 原文链接： [从 0 到 1 使用 VUE-CLI3 开发实战(六)：这是一个有代码洁癖的项目](https://segmentfault.com/a/1190000018033315)

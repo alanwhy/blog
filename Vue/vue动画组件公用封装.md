@@ -1,4 +1,13 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:28
+ * @LastEditTime: 2022-07-06 09:58:43
+ * @LastEditors: wuhaoyuan
+ * @Description: 
+ * @FilePath: /blog/Vue/vue动画组件公用封装.md
+-->
 实现一个简单的逐渐显/隐的组件封装
+
 ```
 <template>
   <transition>
@@ -25,6 +34,7 @@ export default {
 ```
 
 如何调用？
+
 ```
 <template>
   <div class="root">

@@ -1,26 +1,28 @@
-说在前面：本文章包含nodejs，vuejs，vue-cli3，Cesium等环境
-安装node、vue和vue-cli3.0具体参考
+说在前面：本文章包含 nodejs，vuejs，vue-cli3，Cesium 等环境
+安装 node、vue 和 vue-cli3.0 具体参考
 [Vue 爬坑之路（一）—— 使用 vue-cli 搭建项目](https://www.cnblogs.com/wisewrong/p/6255817.html)
 [Vue 爬坑之路（十二）—— vue-cli 3.x 搭建项目](https://www.cnblogs.com/wisewrong/p/9740173.html)
 
 ###一、环境说明
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-5fd44139d568f2f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###二、初始化vue项目
-######1.在想要创建项目的目录下打开cmd，执行
+###二、初始化 vue 项目
+######1.在想要创建项目的目录下打开 cmd，执行
+
 ```
 // cesium-demo为项目名
 vue create cesium-demo
 ```
-######2.设置所需要的vue选项，下图为参考
+
+######2.设置所需要的 vue 选项，下图为参考
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-7bbe198c6b2ec9bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ######3.选择配置项（空格选择），下图为我常用的
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-bdbe32c50b7d8d85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-######4.选择路由方式，y为history，n为hash
+######4.选择路由方式，y 为 history，n 为 hash
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-6472a210371e0ed2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-######5.CSS预编译工具
+######5.CSS 预编译工具
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-35993deacbd42a09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-######6.eslint检查标准选择
+######6.eslint 检查标准选择
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-3f7f6f57c608def2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ######7.什么时候检查？
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-68308222a88e9768.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -28,13 +30,15 @@ vue create cesium-demo
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-394b3b1fb98eac19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ######9.是否保存配置以便下次使用？
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-dadf71b35bc77c68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-######10.等待初始化成功
-###三、引入Cesium库
-######1.进入到项目的文件夹，在此处打开cmd，输入
+######10.等待初始化成功 ###三、引入 Cesium 库
+######1.进入到项目的文件夹，在此处打开 cmd，输入
+
 ```
 npm install cesium -s
 ```
+
 ######2.引入完成后，在项目文件夹下新建文件：`vue.config.js`，文件内容为：
+
 ```
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
@@ -88,7 +92,9 @@ module.exports = {
   }
 };
 ```
-######3.在views文件夹下新建组件`CesiumScene.vue`，文件内容：
+
+######3.在 views 文件夹下新建组件`CesiumScene.vue`，文件内容：
+
 ```
 <template>
   <div id="cesiumContainer"></div>
@@ -135,7 +141,9 @@ export default {
 }
 </style>
 ```
-######4.修改App.vue文件内容如下：
+
+######4.修改 App.vue 文件内容如下：
+
 ```
 <template>
   <div id="app">
@@ -156,7 +164,9 @@ body,
 }
 </style>
 ```
+
 ######5.修改路由如下：
+
 ```
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -176,10 +186,13 @@ export default new Router({
   ]
 })
 ```
+
 ###四、启动项目
-######1.在项目文件夹下打开cmd，输入
+######1.在项目文件夹下打开 cmd，输入
+
 ```
 npm run serve
 ```
-######2.打开浏览器，输入IP或localhost+端口号，即localhost:5000，查看结果
+
+######2.打开浏览器，输入 IP 或 localhost+端口号，即 localhost:5000，查看结果
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-4d322745cf01bf8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

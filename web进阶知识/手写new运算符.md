@@ -1,10 +1,12 @@
 ###new 实现了哪些功能
+
 - 新生成了一个对象
 - 链接到原型
 - 绑定 this
 - 返回新对象
 
 ###代码
+
 ```
 function create() {
     // 创建一个空的对象
@@ -23,6 +25,7 @@ function create() {
 ```
 
 ###测试
+
 ```
 function Dog(name,age){
   this.name = name

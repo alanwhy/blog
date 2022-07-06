@@ -1,5 +1,7 @@
 本文转载，只收藏不常见的，平时不太清楚要如何实现的
+
 ### 椭圆形
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-a4dd8c92b548aad2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -12,7 +14,9 @@
 ```
 
 ### 上三角
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-f5c4a7052be475a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ```
 #triangle-up {
   width: 0;
@@ -24,6 +28,7 @@
 ```
 
 ### 下三角
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-f8cf419989165ffe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -37,6 +42,7 @@
 ```
 
 ### 左三角
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-549211df54efcbde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -50,6 +56,7 @@
 ```
 
 ### 右三角
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-0fb9e70488b8cbba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -63,6 +70,7 @@
 ```
 
 ### 左上角
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-7de4e92d0031434a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -73,8 +81,11 @@
   border-left: 100px solid transparent;
 }
 ```
+
 ### 右上角
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-3cc021e9ba166ce2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ```
 #triangle-topright {
   width: 0;
@@ -85,6 +96,7 @@
 ```
 
 ### 左下角
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-7f2b7c636141601e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -95,7 +107,9 @@
   border-right: 100px solid transparent;
 }
 ```
+
 ### 右下角
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-1bc3335286660e87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -108,6 +122,7 @@
 ```
 
 ### 箭头
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-c6a3f6740d74cbc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -134,7 +149,9 @@
 ```
 
 ### 梯形
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-aa1f50885bf31af0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ```
 #trapezoid {
   border-bottom: 100px solid red;
@@ -146,7 +163,9 @@
 ```
 
 ### 平行四边形
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-9ab4225459cff122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ```
 #parallelogram {
   width: 150px;
@@ -157,7 +176,9 @@
 ```
 
 ### 星星（五角）
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-45bfdaf75c12f16c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ```
 #star-five {
   margin: 50px 0;
@@ -201,7 +222,9 @@
 ```
 
 ### 爱心
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-69262195ebc4c122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ```
 #heart {
   position: relative;
@@ -229,6 +252,7 @@
 ```
 
 ### 菱形
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-b73bd1a1443209db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -253,6 +277,7 @@
 ```
 
 ### 对话泡泡
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-844907cf99f15c34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -279,7 +304,9 @@
 ```
 
 ### 太极
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-b6493d08add7a19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ```
 #yin-yang {
   width: 96px;
@@ -315,11 +342,13 @@
   width: 12px;
   height: 12px;
   box-sizing: content-box;
-}  
+}
 ```
 
 ### 太空入侵者
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-d733d786958a0316.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ```
 #space-invader {
   box-shadow: 0 0 0 1em red,
@@ -357,10 +386,11 @@
   height: 1em;
   overflow: hidden;
   margin: 50px 0 70px 65px;
-}    
+}
 ```
 
 ### 放大镜
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-29b25dd52475bbb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -389,17 +419,20 @@
 ```
 
 ### 月亮
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-7a96a80537e45b4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ```
 #moon {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   box-shadow: 15px 15px 0 0 red;
-}  
+}
 ```
 
 ### 锁
+
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-1f14dfe7721b1a2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```
@@ -442,4 +475,5 @@
   margin-left: -2.5em;
 }
 ```
-> 原文链接：[45个值得收藏的 CSS 形状](https://juejin.im/post/6845166891879628808)
+
+> 原文链接：[45 个值得收藏的 CSS 形状](https://juejin.im/post/6845166891879628808)

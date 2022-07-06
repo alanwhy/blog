@@ -1,10 +1,10 @@
 <!--
  * @Author: wuhaoyuan
  * @Date: 2021-12-13 17:34:24
- * @LastEditTime: 2021-12-13 20:15:54
+ * @LastEditTime: 2022-07-06 09:57:59
  * @LastEditors: wuhaoyuan
  * @Description:
- * @FilePath: /undefined/Users/wuhaoyuan/Desktop/mac 安装 nginx.md
+ * @FilePath: /blog/macos的各类问题/2021-12-13-mac-安装-nginx-踩坑（M1-芯片、ARM-架构芯片）.md
 -->
 
 ## 问题一 没有 brew

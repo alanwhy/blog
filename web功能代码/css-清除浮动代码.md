@@ -1,7 +1,8 @@
 为什么要清除浮动？
-是为了解决 父元素因为子元素的浮动而导致高度变成0的情况
+是为了解决 父元素因为子元素的浮动而导致高度变成 0 的情况
 
 代码如下
+
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,7 @@
       clear: both;
       height: 0;
     } */
-    
+
     /* 这是不考虑兼容低版本浏览器的写法*/
     .clearfix:before,
     .clearfix:after {

@@ -1,16 +1,26 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:28
+ * @LastEditTime: 2022-07-06 09:59:21
+ * @LastEditors: wuhaoyuan
+ * @Description: 
+ * @FilePath: /blog/web功能代码/js防抖&节流.md
+-->
 ###防抖（debounce）
-**思路**：在第一次触发事件时，不立即执行函数，而是给出一个期限值比如200ms，然后：
-- 如果在200ms内没有再次触发滚动事件，那么就执行函数
-- 如果在200ms内再次触发滚动事件，那么当前的计时取消，重新开始计时
+**思路**：在第一次触发事件时，不立即执行函数，而是给出一个期限值比如 200ms，然后：
+
+- 如果在 200ms 内没有再次触发滚动事件，那么就执行函数
+- 如果在 200ms 内再次触发滚动事件，那么当前的计时取消，重新开始计时
 
 **效果**：如果短时间内大量触发同一事件，只会执行一次函数。
-**实现**：既然前面都提到了计时，那实现的关键就在于setTimeOut这个函数，由于还需要一个变量来保存计时，考虑维护全局纯净，可以借助闭包来实现
+**实现**：既然前面都提到了计时，那实现的关键就在于 setTimeOut 这个函数，由于还需要一个变量来保存计时，考虑维护全局纯净，可以借助闭包来实现
+
 ```
 function debounce(fn,delay){
     let timer = null //借助闭包
     return function() {
         if(timer){
-            clearTimeout(timer) 
+            clearTimeout(timer)
         }
         timer = setTimeout(fn,delay) // 简化写法
     }
@@ -22,7 +32,9 @@ function showTop  () {
 }
 window.onscroll = debounce(showTop,1000)
 ```
-####书《JavaScript高级程序设计》中看到的样子
+
+####书《JavaScript 高级程序设计》中看到的样子
+
 ```
 var processor = {
   timeoutId: null, // 相当于延时setTimeout的一个标记，方便清除的时候使用
@@ -53,14 +65,15 @@ processor.process(); // 需要重新绑定在一个触发条件里
 ###节流（throttle）
 **思路**：设计一种类似控制阀门一样定期开放的函数，也就是让函数执行一次后，在某个时间段内暂时失效，过了这段时间后再重新激活（类似于技能冷却时间）
 **效果**：如果短时间内大量触发同一事件，那么在函数执行一次之后，该函数在指定的时间期限内不再工作，直至过了这段时间才重新生效。
-**实现**：这里借助setTimeout来做一个简单的实现，加上一个状态位valid来表示当前函数是否处于工作状态：
+**实现**：这里借助 setTimeout 来做一个简单的实现，加上一个状态位 valid 来表示当前函数是否处于工作状态：
+
 ```
 function throttle(fn,delay){
     let valid = true
     return function() {
        if(!valid){
            //休息时间 暂不接客
-           return false 
+           return false
        }
        // 工作时间，执行函数并且在间隔期内把状态位设为无效
         valid = false
@@ -80,13 +93,15 @@ function showTop  () {
     var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
 　　console.log('滚动条位置：' + scrollTop);
 }
-window.onscroll = throttle(showTop,1000) 
+window.onscroll = throttle(showTop,1000)
 ```
-如果一直拖着滚动条进行滚动，那么会以1s的时间间隔，持续输出当前位置和顶部的距离
+
+如果一直拖着滚动条进行滚动，那么会以 1s 的时间间隔，持续输出当前位置和顶部的距离
 
 ###常用到的场景
-- 返回顶部问题
-- 搜索框input事件，例如要支持输入实时搜索可以使用节流方案（间隔一段时间就必须查询相关内容），或者实现输入间隔大于某个值（如500ms），就当做用户输入完成，然后开始搜索，具体使用哪种方案要看业务需求。
-- 页面resize事件，常见于需要做页面适配的时候。需要根据最终呈现的页面情况进行dom渲染（这种情形一般是使用防抖，因为只需要判断最后一次的变化情况）
 
-> 原文链接：# [浅谈js防抖和节流](https://segmentfault.com/a/1190000018428170)
+- 返回顶部问题
+- 搜索框 input 事件，例如要支持输入实时搜索可以使用节流方案（间隔一段时间就必须查询相关内容），或者实现输入间隔大于某个值（如 500ms），就当做用户输入完成，然后开始搜索，具体使用哪种方案要看业务需求。
+- 页面 resize 事件，常见于需要做页面适配的时候。需要根据最终呈现的页面情况进行 dom 渲染（这种情形一般是使用防抖，因为只需要判断最后一次的变化情况）
+
+> 原文链接：# [浅谈 js 防抖和节流](https://segmentfault.com/a/1190000018428170)

@@ -9,27 +9,27 @@
 
 #### 正文回答
 
-问题是 现在已经没有1px的问题了啊。17以前的BUG了吧？
+问题是 现在已经没有 1px 的问题了啊。17 以前的 BUG 了吧？
 
 **造成边框变粗的原因**
 
-其实这个原因很简单，因为css中的1px并不等于移动设备的1px，这些由于不同的手机有不同的像素密度。在window对象中有一个`devicePixelRatio`属性，他可以反应css中的像素与设备的像素比。
+其实这个原因很简单，因为 css 中的 1px 并不等于移动设备的 1px，这些由于不同的手机有不同的像素密度。在 window 对象中有一个`devicePixelRatio`属性，他可以反应 css 中的像素与设备的像素比。
 
 > `devicePixelRatio`的官方的定义为：设备物理像素和设备独立像素的比例，也就是 `devicePixelRatio` = 物理像素 / 独立像素。
 
-1、0.5px边框
+1、0.5px 边框
 
-解决方案是通过 JavaScript 检测浏览器能否处理0.5px的边框，如果可以，给html标签元素添加个class。
+解决方案是通过 JavaScript 检测浏览器能否处理 0.5px 的边框，如果可以，给 html 标签元素添加个 class。
 
 ```js
 if (window.devicePixelRatio && devicePixelRatio >= 2) {
-var testElem = document.createElement('div');
-testElem.style.border = '.5px solid transparent';
-document.body.appendChild(testElem);
-if (testElem.offsetHeight == 1) {
-document.querySelector('html').classList.add('hairlines');
-}
-document.body.removeChild(testElem);
+  var testElem = document.createElement("div");
+  testElem.style.border = ".5px solid transparent";
+  document.body.appendChild(testElem);
+  if (testElem.offsetHeight == 1) {
+    document.querySelector("html").classList.add("hairlines");
+  }
+  document.body.removeChild(testElem);
 }
 // 脚本应该放在内，如果在里面运行，需要包装 $(document).ready(function() {})
 ```
@@ -67,15 +67,27 @@ div {
 
 ```css
 .background-gradient-1px {
-  background:
-    linear-gradient(180deg, black, black 50%, transparent 50%) top left / 100% 1px no-repeat,
-    linear-gradient(90deg, black, black 50%, transparent 50%) top right / 1px 100% no-repeat,
-    linear-gradient(0, black, black 50%, transparent 50%) bottom right / 100% 1px no-repeat,
-    linear-gradient(-90deg, black, black 50%, transparent 50%) bottom left / 1px 100% no-repeat;
+  background: linear-gradient(180deg, black, black 50%, transparent 50%) top left /
+      100% 1px no-repeat, linear-gradient(
+        90deg,
+        black,
+        black 50%,
+        transparent 50%
+      ) top right / 1px 100% no-repeat,
+    linear-gradient(0, black, black 50%, transparent 50%) bottom right / 100% 1px
+      no-repeat, linear-gradient(-90deg, black, black 50%, transparent 50%) bottom
+      left / 1px 100% no-repeat;
 }
 /* 或者 */
-.background-gradient-1px{
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(.5, transparent), color-stop(.5, #c8c7cc), to(#c8c7cc)) left bottom repeat-x;
+.background-gradient-1px {
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0.5, transparent),
+      color-stop(0.5, #c8c7cc),
+      to(#c8c7cc)
+    ) left bottom repeat-x;
   background-size: 100% 1px;
 }
 ```
@@ -94,12 +106,12 @@ div {
 
 ```css
 /* 单条border样式设置 */
-.scale-1px{
+.scale-1px {
   position: relative;
-  border:none;
+  border: none;
 }
-.scale-1px:after{
-  content: '';
+.scale-1px:after {
+  content: "";
   position: absolute;
   bottom: 0;
   background: #000;
@@ -112,13 +124,13 @@ div {
 }
 
 /* 四条boder样式设置 */
-.scale-1px{
+.scale-1px {
   position: relative;
   margin-bottom: 20px;
-  border:none;
+  border: none;
 }
-.scale-1px:after{
-  content: '';
+.scale-1px:after {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -136,8 +148,8 @@ div {
 
 ```js
 // 判断是否 Retina 屏
-if(window.devicePixelRatio && devicePixelRatio >= 2){
-  document.querySelector('ul').className = 'scale-1px';
+if (window.devicePixelRatio && devicePixelRatio >= 2) {
+  document.querySelector("ul").className = "scale-1px";
 }
 ```
 

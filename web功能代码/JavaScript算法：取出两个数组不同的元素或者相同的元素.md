@@ -1,4 +1,5 @@
 ###取出相同的元素
+
 ```
 getArrEqual(arr1, arr2) {
     let newArr = [];
@@ -12,7 +13,9 @@ getArrEqual(arr1, arr2) {
     return newArr;
 },
 ```
+
 ###取出不同的元素
+
 ```
 getArrDifference(arr1, arr2) {
     return arr1.concat(arr2).filter(function(v, i, arr) {

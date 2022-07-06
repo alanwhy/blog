@@ -1,11 +1,11 @@
 ###适用场景
+
 - 由一个组件，向上找到最近的指定组件；
 - 由一个组件，向上找到所有的指定组件；
 - 由一个组件，向下找到最近的指定组件；
 - 由一个组件，向下找到所有指定的组件；
-- 由一个组件，找到指定组件的兄弟组件。
-###代码实现
-######向上找到最近的指定组件——findComponentUpward
+- 由一个组件，找到指定组件的兄弟组件。 ###代码实现 ######向上找到最近的指定组件——findComponentUpward
+
 ```
 function findComponentUpward (context, componentName) {
   let parent = context.$parent;
@@ -19,7 +19,9 @@ function findComponentUpward (context, componentName) {
 }
 export { findComponentUpward };
 ```
+
 比如下面的示例，有组件 A 和组件 B，A 是 B 的父组件，在 B 中获取和调用 A 中的数据和方法：
+
 ```
 <!-- component-a.vue -->
 <template>
@@ -47,6 +49,7 @@ export { findComponentUpward };
   }
 </script>
 ```
+
 ```
 <!-- component-b.vue -->
 <template>
@@ -61,7 +64,7 @@ export { findComponentUpward };
     name: 'componentB',
     mounted () {
       const comA = findComponentUpward(this, 'componentA');
-      
+
       if (comA) {
         console.log(comA.name);  // Aresn
         comA.sayHello();  // Hello, Vue.js
@@ -70,7 +73,9 @@ export { findComponentUpward };
   }
 </script>
 ```
+
 ######向上找到所有的指定组件——findComponentsUpward
+
 ```
 function findComponentsUpward (context, componentName) {
   let parents = [];
@@ -85,7 +90,9 @@ function findComponentsUpward (context, componentName) {
 }
 export { findComponentsUpward };
 ```
+
 ######向下找到最近的指定组件——findComponentDownward
+
 ```
 function findComponentDownward (context, componentName) {
   const childrens = context.$children;
@@ -108,7 +115,9 @@ function findComponentDownward (context, componentName) {
 }
 export { findComponentDownward };
 ```
+
 ######向下找到所有指定的组件——findComponentsDownward
+
 ```
 function findComponentsDownward (context, componentName) {
   return context.$children.reduce((components, child) => {
@@ -119,7 +128,9 @@ function findComponentsDownward (context, componentName) {
 }
 export { findComponentsDownward };
 ```
+
 ######找到指定组件的兄弟组件——findBrothersComponents
+
 ```
 function findBrothersComponents (context, componentName, exceptMe = true) {
   let res = context.$parent.$children.filter(item => {
@@ -131,7 +142,8 @@ function findBrothersComponents (context, componentName, exceptMe = true) {
 }
 export { findBrothersComponents };
 ```
-findBrothersComponents 多了一个参数 exceptMe，是否把本身除外，默认是 true。
-寻找兄弟组件的方法，是先获取 `context.$parent.$children`，也就是父组件的全部子组件，这里面当前包含了本身，所有也会有第三个参数 exceptMe。Vue.js 在渲染组件时，都会给每个组件加一个内置的属性 _uid，这个 _uid 是不会重复的，借此我们可以从一系列兄弟组件中把自己排除掉。
 
-> 原文链接： [vuejs组件通信精髓归纳](https://segmentfault.com/a/1190000018241972)
+findBrothersComponents 多了一个参数 exceptMe，是否把本身除外，默认是 true。
+寻找兄弟组件的方法，是先获取 `context.$parent.$children`，也就是父组件的全部子组件，这里面当前包含了本身，所有也会有第三个参数 exceptMe。Vue.js 在渲染组件时，都会给每个组件加一个内置的属性 \_uid，这个 \_uid 是不会重复的，借此我们可以从一系列兄弟组件中把自己排除掉。
+
+> 原文链接： [vuejs 组件通信精髓归纳](https://segmentfault.com/a/1190000018241972)

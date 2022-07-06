@@ -1,3 +1,11 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:29
+ * @LastEditTime: 2022-07-06 09:28:54
+ * @LastEditors: wuhaoyuan
+ * @Description: 
+ * @FilePath: /blog/前端100问/【前端100问】Q22：有以下-3-个判断数组的方法，请分别介绍它们之间的区别和优劣-Object-prototype-toString-c.md
+-->
 ### 写在前面
 
 > 此系列来源于开源项目：[前端 100 问：能搞懂 80%的请把简历给我](https://github.com/yygmind/blog/issues/43)

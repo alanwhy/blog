@@ -1,9 +1,18 @@
-#Vue实现数据双向绑定的原理：Object.defineProperty（）
-vue实现数据双向绑定主要是：采用**数据劫持**结合**发布者-订阅者模式**的方式，通过`Object.defineProperty（）`来劫持各个属性的`setter`，`getter`，在数据变动时发布消息给订阅者，触发相应监听回调。当把一个普通 Javascript 对象传给 Vue 实例来作为它的` data `选项时，Vue 将遍历它的属性，用 `Object.defineProperty` 将它们转为 `getter`/`setter`。用户看不到 `getter`/`setter`，但是在内部它们让 Vue 追踪依赖，在属性被访问和修改时通知变化。
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:28
+ * @LastEditTime: 2022-07-06 09:58:46
+ * @LastEditors: wuhaoyuan
+ * @Description: 
+ * @FilePath: /blog/Vue/Vue实现数据双向绑定的原理.md
+-->
+#Vue 实现数据双向绑定的原理：Object.defineProperty（）
+vue 实现数据双向绑定主要是：采用**数据劫持**结合**发布者-订阅者模式**的方式，通过`Object.defineProperty（）`来劫持各个属性的`setter`，`getter`，在数据变动时发布消息给订阅者，触发相应监听回调。当把一个普通 Javascript 对象传给 Vue 实例来作为它的`data`选项时，Vue 将遍历它的属性，用 `Object.defineProperty` 将它们转为 `getter`/`setter`。用户看不到 `getter`/`setter`，但是在内部它们让 Vue 追踪依赖，在属性被访问和修改时通知变化。
 
-vue的数据双向绑定 将MVVM作为数据绑定的入口，整合`Observer`，`Compile`和`Watcher`三者，通过`Observer`来监听自己的`model`的数据变化，通过`Compile`来解析编译模板指令（vue中是用来解析 {{}}），最终利用`watcher`搭起`observer`和`Compile`之间的通信桥梁，达到数据变化 —>视图更新；视图交互变化（input）—>数据`model`变更双向绑定效果。
+vue 的数据双向绑定 将 MVVM 作为数据绑定的入口，整合`Observer`，`Compile`和`Watcher`三者，通过`Observer`来监听自己的`model`的数据变化，通过`Compile`来解析编译模板指令（vue 中是用来解析 {{}}），最终利用`watcher`搭起`observer`和`Compile`之间的通信桥梁，达到数据变化 —>视图更新；视图交互变化（input）—>数据`model`变更双向绑定效果。
 
-js实现简单的双向绑定
+js 实现简单的双向绑定
+
 ```
 <body>
     <div id="app">
@@ -27,9 +36,11 @@ js实现简单的双向绑定
     })
 </script>
 ```
+
 ###那么我们实现数据双向绑定呢？
-原文链接：[小邵教你玩转ES6](https://juejin.im/post/5b7b95206fb9a019bd2463d8)
+原文链接：[小邵教你玩转 ES6](https://juejin.im/post/5b7b95206fb9a019bd2463d8)
 这个问题在面试当中，会经常问这个问题，但是面试官更希望听到的是具体底层的实现方式，那么接下来我们也实现一下吧~ （ 简陋版的……(#^.^#)
+
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -78,9 +89,10 @@ js实现简单的双向绑定
 </body>
 </html>
 ```
-当我们在输入框输入内容时，再到控制台输入obj.name查看这个值时，会发现打印出"hello swr"
-当我们在控制台，给obj.name赋值时，会发现输入框的内容也会作出相应更改
 
-这样我们就实现了一个简陋版的数据双向绑定了，但是这也是有缺点的，这个只是针对对象进行了数据双向绑定,而尤大大的Vuejs就是基于`Object.defineProperty`实现的。
+当我们在输入框输入内容时，再到控制台输入 obj.name 查看这个值时，会发现打印出"hello swr"
+当我们在控制台，给 obj.name 赋值时，会发现输入框的内容也会作出相应更改
 
-肯定是有其他方式可以实现的，利用es6的`proxy`代理也可以实现数据双向绑定，但是目前的框架还是比较少使用这种方式。
+这样我们就实现了一个简陋版的数据双向绑定了，但是这也是有缺点的，这个只是针对对象进行了数据双向绑定,而尤大大的 Vuejs 就是基于`Object.defineProperty`实现的。
+
+肯定是有其他方式可以实现的，利用 es6 的`proxy`代理也可以实现数据双向绑定，但是目前的框架还是比较少使用这种方式。

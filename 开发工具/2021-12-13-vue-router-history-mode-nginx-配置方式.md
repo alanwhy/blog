@@ -1,11 +1,12 @@
 <!--
  * @Author: wuhaoyuan
  * @Date: 2021-12-13 20:28:09
- * @LastEditTime: 2021-12-13 20:41:53
+ * @LastEditTime: 2022-07-06 09:26:51
  * @LastEditors: wuhaoyuan
  * @Description:
- * @FilePath: /undefined/Users/wuhaoyuan/Desktop/vue history mode nginx配置方式.md
+ * @FilePath: /blog/开发工具/2021-12-13-vue-router-history-mode-nginx-配置方式.md
 -->
+
 ## 环境情况
 
 - vue-cli 4.X
@@ -98,12 +99,12 @@ module.exports = {
 nginx 中配置
 
 ```shell
-location / {    
+location / {
   root /usr/local/var/www;  # 项目在服务器上的真实路径
   index  index.html index.htm;
-  try_files $uri $uri/ @rewrites; 
-} 
-        
+  try_files $uri $uri/ @rewrites;
+}
+
 location @rewrites {
   rewrite ^(.*)$ /index.html last;
 }

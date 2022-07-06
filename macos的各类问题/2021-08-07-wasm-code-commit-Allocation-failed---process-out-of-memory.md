@@ -16,7 +16,7 @@ wasm code commit Allocation failed - process out of memory
 
 ```shell
 $ nvm uninstall 14
-$ arch -x86_64 zsh 
+$ arch -x86_64 zsh
 $ nvm install 14
 $ nvm alias default 14
 ```

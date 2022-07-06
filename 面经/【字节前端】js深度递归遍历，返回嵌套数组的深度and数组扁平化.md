@@ -1,12 +1,15 @@
 ###题目
-写一个js方法，传入一个嵌套数组如：
+写一个 js 方法，传入一个嵌套数组如：
+
 ```
 [1, 2, [3, [4, 5], 6], [3, 4]]
 ```
-返回数组的深度，返回值为3
+
+返回数组的深度，返回值为 3
 
 ###思路一
 深度递归
+
 ```
 var getArrayDeepin = function (array, deepin = 0) {
   if (!Array.isArray(array)) {
@@ -23,6 +26,7 @@ var getArrayDeepin = function (array, deepin = 0) {
 
 ###思路二
 转字符串，遍历字符串，找到 `[` 字符深度加一，找到 `]` 字符深度减一
+
 ```
 var getArrayDeepin= function (arr) {
   let str = JSON.stringify(arr)
@@ -41,10 +45,11 @@ var getArrayDeepin= function (arr) {
   }
   return max
 }
-``` 
+```
 
 ps 因为够菜，一面挂彩。
 关于数组的扁平化，其实也是属于此类问题，放一些代码
+
 > 原文链接：[JavaScript 专题之数组扁平化](https://juejin.im/post/59716f15f265da6c4c500fc7)
 
 ```
@@ -114,7 +119,7 @@ console.log(flatten(arr))
 ```
 // Array.prototype.flat()
 var arr1 = [1, 2, [3, 4]];
-arr1.flat(); 
+arr1.flat();
 // [1, 2, 3, 4]
 
 var arr2 = [1, 2, [3, 4, [5, 6]]];
@@ -125,6 +130,6 @@ var arr3 = [1, 2, [3, 4, [5, 6]]];
 arr3.flat(2);
 // [1, 2, 3, 4, 5, 6]
 
-arr1.flat(Infinity) 
+arr1.flat(Infinity)
 // [1, 2, 3, 4]
 ```

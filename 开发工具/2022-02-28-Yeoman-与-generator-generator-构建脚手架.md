@@ -1,10 +1,10 @@
 <!--
  * @Author: wuhaoyuan
  * @Date: 2022-02-28 14:48:12
- * @LastEditTime: 2022-02-28 15:02:05
+ * @LastEditTime: 2022-07-06 09:26:54
  * @LastEditors: wuhaoyuan
  * @Description:
- * @FilePath: /Desktop/yeoman.md
+ * @FilePath: /blog/开发工具/2022-02-28-Yeoman-与-generator-generator-构建脚手架.md
 -->
 
 ## 起步

@@ -1,14 +1,17 @@
 ###变量
 #####1、变量命名
 一般我们在定义变量是要使用有意义的词汇命令，要做到见面知义
+
 ```
 //bad code
 const yyyymmdstr = moment().format('YYYY/MM/DD');
 //better code
 const currentDate = moment().format('YYYY/MM/DD');
 ```
+
 #####2、可描述
 通过一个变量生成了一个新变量，也需要为这个新变量命名，也就是说每个变量当你看到他第一眼你就知道他是干什么的。
+
 ```
 //bad code
 const ADDRESS = 'One Infinite Loop, Cupertino 95014';
@@ -21,8 +24,10 @@ const CITY_ZIP_CODE_REGEX = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 const [, city, zipCode] = ADDRESS.match(CITY_ZIP_CODE_REGEX) || [];
 saveCityZipCode(city, zipCode);
 ```
+
 #####3、形参命名
-在for、forEach、map的循环中我们在命名时要直接
+在 for、forEach、map 的循环中我们在命名时要直接
+
 ```
 //bad code
 const locations = ['Austin', 'New York', 'San Francisco'];
@@ -47,8 +52,10 @@ locations.forEach((location) => {
   dispatch(location);
 });
 ```
+
 #####4、避免无意义的前缀
 例如我们只创建一个对象是，没有必要再把每个对象的属性上再加上对象名
+
 ```
 //bad code
 const car = {
@@ -72,7 +79,9 @@ function paintCar(car) {
   car.color = 'Red';
 }
 ```
+
 #####5、默认值
+
 ```
 //bad code
 function createMicrobrewery(name) {
@@ -85,9 +94,11 @@ function createMicrobrewery(name = 'Hipster Brew Co.') {
   // ...
 }
 ```
+
 ###函数
 #####1、参数
-一般参数多的话要使用ES6的解构传参的方式
+一般参数多的话要使用 ES6 的解构传参的方式
+
 ```
 //bad code
 function createMenu(title, body, buttonText, cancellable) {
@@ -107,8 +118,10 @@ createMenu({
   cancellable: true
 });
 ```
+
 #####2、单一化处理
 一个方法里面最好只做一件事，不要过多的处理，这样代码的可读性非常高
+
 ```
 //bad code
 function emailClients(clients) {
@@ -127,11 +140,13 @@ function emailActiveClients(clients) {
     .forEach(email);
 }
 function isActiveClient(client) {
-  const clientRecord = database.lookup(client);    
+  const clientRecord = database.lookup(client);
   return clientRecord.isActive();
 }
 ```
+
 #####3、对象设置默认属性
+
 ```
 //bad code
 const menuConfig = {
@@ -171,10 +186,12 @@ function createMenu(config) {
 
 createMenu(menuConfig);
 ```
+
 #####4、避免副作用
 函数接收一个值返回一个新值，除此之外的行为我们都称之为副作用，比如修改全局变量、对文件进行 IO 操作等。
 当函数确实需要副作用时，比如对文件进行 IO 操作时，请不要用多个函数/类进行文件操作，有且仅用一个函数/类来处理。也就是说副作用需要在唯一的地方处理。
 副作用的三大天坑：随意修改可变数据类型、随意分享没有数据结构的状态、没有在统一地方处理副作用。
+
 ```
 //bad code
 // 全局变量被一个函数引用
@@ -198,6 +215,7 @@ function splitIntoFirstAndLastName(name) {
 console.log(name); // 'Ryan McDermott';
 console.log(newName); // ['Ryan', 'McDermott'];
 ```
+
 在 JavaScript 中，基本类型通过赋值传递，对象和数组通过引用传递。以引用传递为例：
 
 假如我们写一个购物车，通过 addItemToCart()方法添加商品到购物车，修改 购物车数组。此时调用 purchase()方法购买，由于引用传递，获取的 购物车数组正好是最新的数据。
@@ -207,6 +225,7 @@ console.log(newName); // ['Ryan', 'McDermott'];
 如果当用户点击购买时，网络出现故障， purchase()方法一直在重复调用，与此同时用户又添加了新的商品，这时网络又恢复了。那么 purchase()方法获取到 购物车数组就是错误的。
 
 为了避免这种问题，我们需要在每次新增商品时，克隆 购物车数组并返回新的数组。
+
 ```
 //bad code
 const addItemToCart = (cart, item) => {
@@ -218,8 +237,10 @@ const addItemToCart = (cart, item) => {
   return [...cart, {item, date: Date.now()}]
 };
 ```
+
 #####5、全局方法
 在 JavaScript 中，永远不要污染全局，会在生产环境中产生难以预料的 bug。举个例子，比如你在 `Array.prototype`上新增一个 `diff`方法来判断两个数组的不同。而你同事也打算做类似的事情，不过他的 `diff`方法是用来判断两个数组首位元素的不同。很明显你们方法会产生冲突，遇到这类问题我们可以用 ES2015/ES6 的语法来对 `Array`进行扩展。
+
 ```
 //bad code
 Array.prototype.diff = function diff(comparisonArray) {
@@ -231,12 +252,14 @@ Array.prototype.diff = function diff(comparisonArray) {
 class SuperArray extends Array {
   diff(comparisonArray) {
     const hash = new Set(comparisonArray);
-    return this.filter(elem => !hash.has(elem));        
+    return this.filter(elem => !hash.has(elem));
   }
 }
 ```
+
 #####6、避免类型检查
 JavaScript 是无类型的，意味着你可以传任意类型参数，这种自由度很容易让人困扰，不自觉的就会去检查类型。仔细想想是你真的需要检查类型还是你的 API 设计有问题？
+
 ```
 //bad code
 function travelToTexas(vehicle) {
@@ -252,7 +275,9 @@ function travelToTexas(vehicle) {
   vehicle.move(this.currentLocation, new Location('texas'));
 }
 ```
+
 如果你需要做静态类型检查，比如字符串、整数等，推荐使用 TypeScript，不然你的代码会变得又臭又长。
+
 ```
 //bad code
 function combine(val1, val2) {
@@ -269,8 +294,10 @@ function combine(val1, val2) {
   return val1 + val2;
 }
 ```
+
 ###复杂条件判断
 #####1、if/else
+
 ```
 /**
  * 按钮点击事件
@@ -298,8 +325,10 @@ const onButtonClick = (status)=>{
   }
 }
 ```
-从上面我们可以看到的是通过不同的状态来做不同的事情，代码看起来非常不好看，大家可以很轻易的提出这段代码的改写方案，switch出场
+
+从上面我们可以看到的是通过不同的状态来做不同的事情，代码看起来非常不好看，大家可以很轻易的提出这段代码的改写方案，switch 出场
 #####2、switch/case
+
 ```
 /**
  * 按钮点击事件
@@ -315,7 +344,7 @@ const onButtonClick = (status)=>{
     case 3:
       sendLog('fail')
       jumpTo('FailPage')
-      break  
+      break
     case 4:
       sendLog('success')
       jumpTo('SuccessPage')
@@ -331,9 +360,11 @@ const onButtonClick = (status)=>{
   }
 }
 ```
-这样看起来比if/else清晰多了，细心的同学也发现了小技巧，case 2和case 3逻辑一样的时候，可以省去执行语句和break，则case 2的情况自动执行case 3的逻辑
-#####3、存放到Object
+
+这样看起来比 if/else 清晰多了，细心的同学也发现了小技巧，case 2 和 case 3 逻辑一样的时候，可以省去执行语句和 break，则 case 2 的情况自动执行 case 3 的逻辑
+#####3、存放到 Object
 将判断条件作为对象的属性名，将处理逻辑作为对象的属性值，在按钮点击的时候，通过对象属性查找的方式来进行逻辑判断，这种写法特别适合一元条件判断的情况。
+
 ```
 const actions = {
   '1': ['processing','IndexPage'],
@@ -355,7 +386,9 @@ const onButtonClick = (status)=>{
   jumpTo(pageName)
 }
 ```
-#####4、存放到Map
+
+#####4、存放到 Map
+
 ```
 const actions = new Map([
   [1, ['processing','IndexPage']],
@@ -375,12 +408,13 @@ const onButtonClick = (status)=>{
   jumpTo(action[1])
 }
 ```
-这样写用到了es6里的Map对象，是不是更爽了？Map对象和Object对象有什么区别呢？
+
+这样写用到了 es6 里的 Map 对象，是不是更爽了？Map 对象和 Object 对象有什么区别呢？
+
 - 一个对象通常都有自己的原型，所以一个对象总有一个"prototype"键。
-- 一个对象的键只能是字符串或者Symbols，但一个Map的键可以是任意值。
-- 你可以通过size属性很容易地得到一个Map的键值对个数，而对象的键值对个数只能手动确认。
-###代码风格
-#####常量大写
+- 一个对象的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值。
+- 你可以通过 size 属性很容易地得到一个 Map 的键值对个数，而对象的键值对个数只能手动确认。 ###代码风格 #####常量大写
+
 ```
 //bad code
 const DAYS_IN_WEEK = 7;
@@ -408,7 +442,9 @@ function restoreDatabase() {}
 class Animal {}
 class Alpaca {}
 ```
+
 #####先声明后调用
+
 ```
 //bad code
 class PerformanceReview {
@@ -486,6 +522,4 @@ review.perfReview();
 
 ```
 
-
-
-> 原文链接：# [如何写出优雅耐看的JavaScript代码](https://segmentfault.com/a/1190000020444918)
+> 原文链接：# [如何写出优雅耐看的 JavaScript 代码](https://segmentfault.com/a/1190000020444918)

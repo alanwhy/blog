@@ -1,10 +1,10 @@
 <!--
  * @Author: wuhaoyuan
  * @Date: 2021-11-17 09:02:26
- * @LastEditTime: 2021-11-17 09:56:08
+ * @LastEditTime: 2022-07-06 09:59:55
  * @LastEditors: wuhaoyuan
  * @Description:
- * @FilePath: /MineMap3DEngine/source/api/this.md
+ * @FilePath: /blog/web进阶知识/2021-11-17-JavaScript-的-this-原理是什么？.md
 -->
 
 ## 场景 1：全局环境下的 this
@@ -13,11 +13,11 @@
 
 ```js
 function f1() {
-	console.log(this);
+  console.log(this);
 }
 function f2() {
-	"use strict";
-	console.log(this);
+  "use strict";
+  console.log(this);
 }
 f1(); // window
 f2(); // undefined
@@ -27,11 +27,11 @@ f2(); // undefined
 
 ```js
 const foo = {
-	bar: 10,
-	fn: function () {
-		console.log(this);
-		console.log(this.bar);
-	}
+  bar: 10,
+  fn: function () {
+    console.log(this);
+    console.log(this.bar);
+  },
 };
 var fn1 = foo.fn;
 fn1();
@@ -41,11 +41,11 @@ fn1();
 
 ```js
 const foo = {
-	bar: 10,
-	fn: function () {
-		console.log(this);
-		console.log(this.bar);
-	}
+  bar: 10,
+  fn: function () {
+    console.log(this);
+    console.log(this.bar);
+  },
 };
 foo.fn();
 ```
@@ -65,13 +65,13 @@ foo.fn();
 
 ```js
 const person = {
-	name: "Lucas",
-	brother: {
-		name: "Mike",
-		fn: function () {
-			return this.name;
-		}
-	}
+  name: "Lucas",
+  brother: {
+    name: "Mike",
+    fn: function () {
+      return this.name;
+    },
+  },
 };
 console.log(person.brother.fn());
 ```
@@ -82,23 +82,23 @@ console.log(person.brother.fn());
 
 ```js
 const o1 = {
-	text: "o1",
-	fn: function () {
-		return this.text;
-	}
+  text: "o1",
+  fn: function () {
+    return this.text;
+  },
 };
 const o2 = {
-	text: "o2",
-	fn: function () {
-		return o1.fn();
-	}
+  text: "o2",
+  fn: function () {
+    return o1.fn();
+  },
 };
 const o3 = {
-	text: "o3",
-	fn: function () {
-		var fn = o1.fn;
-		return fn();
-	}
+  text: "o3",
+  fn: function () {
+    var fn = o1.fn;
+    return fn();
+  },
 };
 
 console.log(o1.fn());
@@ -110,9 +110,9 @@ console.log(o3.fn());
 
 我们来一一分析。
 
--   第一个 `console` 最简单，`o1` 没有问题。难点在第二个和第三个上面，关键还是看调用 `this` 的那个函数。
--   第二个 `console` 的 `o2.fn()`，最终还是调用 `o1.fn()`，因此答案仍然是 `o1`。
--   最后一个，在进行 `var fn = o1.fn` 赋值之后，是“裸奔”调用，因此这里的 `this` 指向 `window`，答案当然是 `undefined`。
+- 第一个 `console` 最简单，`o1` 没有问题。难点在第二个和第三个上面，关键还是看调用 `this` 的那个函数。
+- 第二个 `console` 的 `o2.fn()`，最终还是调用 `o1.fn()`，因此答案仍然是 `o1`。
+- 最后一个，在进行 `var fn = o1.fn` 赋值之后，是“裸奔”调用，因此这里的 `this` 指向 `window`，答案当然是 `undefined`。
 
 如果是在面试中，我作为面试官，就会追问：如果我们需要让 `console.log(o2.fn())` 输出 `o2`，该怎么做？
 
@@ -120,14 +120,14 @@ console.log(o3.fn());
 
 ```js
 const o1 = {
-	text: "o1",
-	fn: function () {
-		return this.text;
-	}
+  text: "o1",
+  fn: function () {
+    return this.text;
+  },
 };
 const o2 = {
-	text: "o2",
-	fn: o1.fn
+  text: "o2",
+  fn: o1.fn,
 };
 
 console.log(o2.fn());
@@ -141,13 +141,13 @@ console.log(o2.fn());
 
 ```js
 const foo = {
-	name: "lucas",
-	logName: function () {
-		console.log(this.name);
-	}
+  name: "lucas",
+  logName: function () {
+    console.log(this.name);
+  },
 };
 const bar = {
-	name: "mike"
+  name: "mike",
 };
 console.log(foo.logName.call(bar));
 ```
@@ -158,7 +158,7 @@ console.log(foo.logName.call(bar));
 
 ```js
 function Foo() {
-	this.bar = "Lucas";
+  this.bar = "Lucas";
 }
 const instance = new Foo();
 console.log(instance.bar);
@@ -166,10 +166,10 @@ console.log(instance.bar);
 
 答案将会输出 `Lucas`。但是这样的场景往往伴随着下一个问题：`new` 操作符调用构造函数，具体做了什么？以下供参考：
 
--   创建一个新的对象；
--   将构造函数的 `this` 指向这个新对象；
--   为这个对象添加属性、方法等；
--   最终返回新对象。
+- 创建一个新的对象；
+- 将构造函数的 `this` 指向这个新对象；
+- 为这个对象添加属性、方法等；
+- 最终返回新对象。
 
 以上过程，也可以用代码表述：
 
@@ -185,9 +185,9 @@ Foo.call(obj);
 
 ```js
 function Foo() {
-	this.user = "Lucas";
-	const o = {};
-	return o;
+  this.user = "Lucas";
+  const o = {};
+  return o;
 }
 const instance = new Foo();
 console.log(instance.user);
@@ -197,8 +197,8 @@ console.log(instance.user);
 
 ```js
 function Foo() {
-	this.user = "Lucas";
-	return 1;
+  this.user = "Lucas";
+  return 1;
 }
 const instance = new Foo();
 console.log(instance.user);
@@ -214,11 +214,11 @@ console.log(instance.user);
 
 ```js
 const foo = {
-	fn: function () {
-		setTimeout(function () {
-			console.log(this);
-		});
-	}
+  fn: function () {
+    setTimeout(function () {
+      console.log(this);
+    });
+  },
 };
 console.log(foo.fn());
 ```
@@ -227,11 +227,11 @@ console.log(foo.fn());
 
 ```js
 const foo = {
-	fn: function () {
-		setTimeout(() => {
-			console.log(this);
-		});
-	}
+  fn: function () {
+    setTimeout(() => {
+      console.log(this);
+    });
+  },
 };
 console.log(foo.fn());
 
@@ -248,17 +248,17 @@ console.log(foo.fn());
 
 ```js
 function foo(a) {
-	console.log(this.a);
+  console.log(this.a);
 }
 
 const obj1 = {
-	a: 1,
-	foo: foo
+  a: 1,
+  foo: foo,
 };
 
 const obj2 = {
-	a: 2,
-	foo: foo
+  a: 2,
+  foo: foo,
 };
 
 obj1.foo.call(obj2);
@@ -269,7 +269,7 @@ obj2.foo.call(obj1);
 
 ```js
 function foo(a) {
-	this.a = a;
+  this.a = a;
 }
 
 const obj1 = {};
@@ -294,17 +294,17 @@ console.log(baz.a);
 
 ```js
 function foo() {
-	return (a) => {
-		console.log(this.a);
-	};
+  return (a) => {
+    console.log(this.a);
+  };
 }
 
 const obj1 = {
-	a: 2
+  a: 2,
 };
 
 const obj2 = {
-	a: 3
+  a: 3,
 };
 
 const bar = foo.call(obj1);
@@ -318,15 +318,15 @@ console.log(bar.call(obj2));
 ```js
 var a = 123;
 const foo = () => (a) => {
-	console.log(this.a);
+  console.log(this.a);
 };
 
 const obj1 = {
-	a: 2
+  a: 2,
 };
 
 const obj2 = {
-	a: 3
+  a: 3,
 };
 
 var bar = foo.call(obj1);
@@ -340,15 +340,15 @@ console.log(bar.call(obj2));
 ```js
 const a = 123;
 const foo = () => (a) => {
-	console.log(this.a);
+  console.log(this.a);
 };
 
 const obj1 = {
-	a: 2
+  a: 2,
 };
 
 const obj2 = {
-	a: 3
+  a: 3,
 };
 
 var bar = foo.call(obj1);

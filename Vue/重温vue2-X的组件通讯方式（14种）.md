@@ -1,5 +1,6 @@
 ###1、`props`
 父传子的属性，props 值可以是一个数组或对象;
+
 ```
 // 数组:不建议使用
 props:[]
@@ -23,15 +24,19 @@ props:{
 
 ###2、`$emit`
 子传父的方法
+
 ```
 // 父组件
 <home @title="title">
 // 子组件
 this.$emit('title',[{title:'这是title'}])
 ```
+
 ###3、`vuex`
+
 - vuex 是一个状态管理器
 - 适合数据共享多的项目里面,因为如果只是简单的通讯,使用起来会比较重
+
 ```
 state:定义存贮数据的仓库 ,可通过this.$store.state 或mapState访问
 getter:获取 store 值,可认为是 store 的计算属性,可通过this.$store.getter 或
@@ -42,10 +47,11 @@ action:异步调用函数执行mutation,进而改变 store 值,可通过 this.$d
        访问
 modules:模块,如果状态过多,可以拆分成模块,最后在入口通过...解构引入
 ```
-###4、 `$attrs`和`$listeners`
-1.`$attrs`
+
+###4、 `$attrs`和`$listeners` 1.`$attrs`
 场景:如果父传子有很多值,那么在子组件需要定义多个 props
-解决:$attrs获取子传父中未在 props 定义的值
+解决:$attrs 获取子传父中未在 props 定义的值
+
 ```
 // 父组件
 <home title="这是标题" width="80" height="80" imgUrl="imgUrl"/>
@@ -55,7 +61,9 @@ mounted() {
   console.log(this.$attrs) //{title: "这是标题", width: "80", height: "80", imgUrl: "imgUrl"}
 },
 ```
+
 相对应的如果子组件定义了 props,打印的值就是剔除定义的属性
+
 ```
 props: {
   width: {
@@ -67,9 +75,11 @@ mounted() {
   console.log(this.$attrs) //{title: "这是标题", height: "80", imgUrl: "imgUrl"}
 },
 ```
+
 2.`$listeners`
 场景:子组件需要调用父组件的方法
 解决:父组件的方法可以通过 v-on="$listeners" 传入内部组件——在创建更高层次的组件时非常有用
+
 ```
 // 父组件
 <home @change="change"/>
@@ -79,8 +89,10 @@ mounted() {
   console.log(this.$listeners) //即可拿到 change 事件
 }
 ```
+
 如果是孙组件要访问父组件的属性和调用方法,直接一级一级传下去就可以
 3.inheritAttrs
+
 ```
 // 父组件
 <home title="这是标题" width="80" height="80" imgUrl="imgUrl"/>
@@ -97,6 +109,7 @@ inheritAttrs默认值为true，true的意思是将父组件中除了props外的�
 ###5、`provide`和`inject`
 provide 和 inject 主要为高阶插件/组件库提供用例。并不推荐直接用于应用程序代码中；并且这对选项需要一起使用
 以允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。
+
 ```
 //父组件:
 provide: { //provide 是一个对象,提供一个属性或方法
@@ -114,11 +127,13 @@ mounted() {
 }
 //在父组件下面所有的子组件都可以利用inject
 ```
+
 provide 和 inject 绑定并不是可响应的。这是官方刻意为之的。
 然而，如果你传入了一个可监听的对象，那么其对象的属性还是可响应的,对象是因为是引用类型
+
 ```
 //父组件:
-provide: { 
+provide: {
   foo: '这是 foo'
 },
 mounted(){
@@ -126,7 +141,7 @@ mounted(){
 }
 
 // 子或者孙子组件
-inject: ['foo'], 
+inject: ['foo'],
 mounted() {
   console.log(this.foo) //子组件打印的还是'这是 foo'
 }
@@ -135,10 +150,11 @@ mounted() {
 ###6、`$parent`和`$children`
 $parent:父实例
 $children:子实例
+
 ```
 //父组件
 mounted(){
-  console.log(this.$children) 
+  console.log(this.$children)
   //可以拿到 一级子组件的属性和方法
   //所以就可以直接改变 data,或者调用 methods 方法
 }
@@ -148,9 +164,11 @@ mounted(){
   console.log(this.$parent) //可以拿到 parent 的属性和方法
 }
 ```
+
 `$children`和`$parent` 并不保证顺序，也不是响应式的
 只能拿到一级父组件和子组件
 ###7、`$refs`
+
 ```
 // 父组件
 <home ref="home"/>
@@ -159,7 +177,9 @@ mounted(){
   console.log(this.$refs.home) //即可拿到子组件的实例,就可以直接操作 data 和 methods
 }
 ```
+
 ###8、`$root`
+
 ```
 // 父组件
 mounted(){
@@ -168,10 +188,12 @@ mounted(){
   console.log(this.$root.$children[0].$children[0]) //获取根实例的二级子组件
 }
 ```
+
 ###9、`.sync`
 在 vue@1.x 的时候曾作为双向绑定功能存在，即子组件可以修改父组件中的值;
 在 vue@2.0 的由于违背单项数据流的设计被干掉了;
 在 vue@2.3.0+ 以上版本又重新引入了这个 .sync 修饰符;
+
 ```
 // 父组件
 <home :title.sync="title" />
@@ -184,51 +206,57 @@ mounted(){
   this.$emit("update:title", '这是新的title')
 }
 ```
+
 ###10、`v-slot`
 将父组件的 template 传入子组件
 分类:
 A.匿名插槽(也叫默认插槽): 没有命名,有且只有一个;
+
 ```
 // 父组件
-<todo-list> 
+<todo-list>
     <template v-slot:default>
        任意内容
        <p>我是匿名插槽 </p>
     </template>
-</todo-list> 
+</todo-list>
 
 // 子组件
 <slot>我是默认值</slot>
 //v-slot:default写上感觉和具名写法比较统一,容易理解,也可以不用写
 ```
-B.具名插槽: 相对匿名插槽组件slot标签带name命名的;
+
+B.具名插槽: 相对匿名插槽组件 slot 标签带 name 命名的;
+
 ```
 // 父组件
-<todo-list> 
+<todo-list>
     <template v-slot:todo>
        任意内容
        <p>我是匿名插槽 </p>
     </template>
-</todo-list> 
+</todo-list>
 
 //子组件
 <slot name="todo">我是默认值</slot>
 ```
+
 C.作用域插槽: 子组件内数据可以被父页面拿到(解决了数据只能从父页面传递给子组件)
+
 ```
 // 父组件
 <todo-list>
  <template v-slot:todo="slotProps" >
    {{slotProps.user.firstName}}
- </template> 
-</todo-list> 
+ </template>
+</todo-list>
 //slotProps 可以随意命名
 //slotProps 接取的是子组件标签slot上属性数据的集合所有v-bind:user="user"
 
 // 子组件
 <slot name="todo" :user="user" :test="test">
     {{ user.lastName }}
- </slot> 
+ </slot>
 data() {
     return {
       user:{
@@ -240,11 +268,14 @@ data() {
   },
 // {{ user.lastName }}是默认数据  v-slot:todo 当父页面没有(="slotProps")
 ```
+
 ###11、`EventBus`
-- 声明一个全局Vue实例变量 EventBus , 把所有的通信数据，事件监听都存储到这个变量上;
+
+- 声明一个全局 Vue 实例变量 EventBus , 把所有的通信数据，事件监听都存储到这个变量上;
 - 类似于 Vuex。但这种方式只适用于极小的项目
 - 原理就是利用$on和$emit 并实例化一个全局 vue 实现数据共享
-- 可以实现平级,嵌套组件传值,但是对应的事件名eventTarget必须是全局唯一的
+- 可以实现平级,嵌套组件传值,但是对应的事件名 eventTarget 必须是全局唯一的
+
 ```
 // 在 main.js
 Vue.prototype.$eventBus=new Vue()
@@ -257,9 +288,11 @@ this.$eventBus.$on("eventTarget",v=>{
   console.log('eventTarget',v);//这是eventTarget传过来的值
 })
 ```
+
 ###12、`broadcast`和`dispatch`
 vue 1.x 有这两个方法,事件广播和派发,但是 vue 2.x 删除了
 下面是对两个方法进行的封装
+
 ```
 function broadcast(componentName, eventName, params) {
   this.$children.forEach(child => {
@@ -294,8 +327,9 @@ export default {
   }
 }
 ```
-###13、路由传参
-1.方案一
+
+###13、路由传参 1.方案一
+
 ```
 // 路由定义
 {
@@ -310,7 +344,9 @@ this.$router.push({
 // 页面获取
 this.$route.params.id
 ```
+
 2.方案二
+
 ```
 // 路由定义
 {
@@ -328,7 +364,9 @@ this.$router.push({
 // 页面获取
 this.$route.params.id
 ```
+
 3.方案三
+
 ```
 // 路由定义
 {
@@ -346,6 +384,7 @@ this.$router.push({
 // 页面获取
 this.$route.query.id
 ```
+
 4.三种方案对比
 方案二参数不会拼接在路由后面,页面刷新参数会丢失
 方案一和三参数拼接在后面,丑,而且暴露了信息
@@ -353,7 +392,8 @@ this.$route.query.id
 用法:让一个对象可响应。Vue 内部会用它来处理 data 函数返回的对象;
 返回的对象可以直接用于渲染函数和计算属性内，并且会在发生改变时触发相应的更新;
 也可以作为最小化的跨组件状态存储器，用于简单的场景。
-通讯原理实质上是利用Vue.observable实现一个简易的 vuex
+通讯原理实质上是利用 Vue.observable 实现一个简易的 vuex
+
 ```
 // 文件路径 - /store/store.js
 import Vue from 'vue'
@@ -392,5 +432,4 @@ export default {
 </script>
 ```
 
-> 原文链接：# [Vue 开发必须知道的 36 个技巧【近1W字】](https://segmentfault.com/a/1190000020620972)
-
+> 原文链接：# [Vue 开发必须知道的 36 个技巧【近 1W 字】](https://segmentfault.com/a/1190000020620972)

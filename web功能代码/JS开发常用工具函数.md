@@ -447,7 +447,9 @@ export default {
   }
 };
 ```
+
 ###原作版本
+
 ```
 /*JS开发常用工具函数*/
 
@@ -485,7 +487,7 @@ function isObject(value) {
 function isObjectLike(value) {
   	return value != null && typeof value == 'object';
 }
-	
+
 /*
  5、getRawType：获取数据类型，返回结果为 Number、String、Object、Array等
  */
@@ -549,7 +551,7 @@ function isLength(value) {
 }
 
 /*
- 13、isArrayLike：检查 value 是否是类数组。 
+ 13、isArrayLike：检查 value 是否是类数组。
  如果一个值被认为是类数组，那么它不是一个函数，并且value.length是个整数，大于等于 0，小于或等于 Number.MAX_SAFE_INTEGER。
  这里字符串也将被当作类数组
  * */
@@ -601,7 +603,7 @@ function camelize(str) {
 //ab-cd-ef ==> abCdEf
 //使用记忆函数
 let _camelize = cached(camelize)
-	
+
 /**
  17、hyphenate：驼峰命名转横线命名：拆分字符串，使用 - 相连，并且转换为小写
  */
@@ -612,7 +614,7 @@ function hyphenate(str){
 //abCd ==> ab-cd
 //使用记忆函数
 let _hyphenate = cached(hyphenate);
-	
+
 /**
  18、capitalize：字符串首位大写
  */
@@ -638,7 +640,7 @@ function extend(to, _from) {
  * */
 Object.assign = Object.assign || function(){
 	if(arguments.length == 0) throw new TypeError('Cannot convert undefined or null to object');
-	
+
 	let target = arguments[0],
 		args = Array.prototype.slice.call(arguments, 1),
 		key
@@ -663,7 +665,7 @@ function clone(value, deep){
 	if(isPrimitive(value)){
 		return value
 	}
-	
+
 	if (isArrayLike(value)) { //是类数组
 		value = Array.prototype.slice.call(value)
 		return value.map(item => deep ? clone(item, deep) : item)
@@ -673,12 +675,12 @@ function clone(value, deep){
 	        value.hasOwnProperty(key) && ( target[key] = deep ? clone(value[key], deep) : value[key] )
 	    }
     }
-    
+
     let type = getRawType(value)
-    
+
     switch(type){
     	case 'Date':
-    	case 'RegExp': 
+    	case 'RegExp':
     	case 'Error': value = new window[type](value); break;
     }
     return value
@@ -759,7 +761,7 @@ function unique(arr){
 	let result = []
 	let objarr = []
 	let obj = Object.create(null)
-	
+
 	arr.forEach(item => {
 		if(isStatic(item)){//是除了symbol外的原始数据
 			let key = item + '_' + getRawType(item);
@@ -774,7 +776,7 @@ function unique(arr){
 			}
 		}
 	})
-	
+
 	return resulte
 }
 
@@ -921,7 +923,7 @@ function getPropByPath(obj, path, strict) {
 		v: tempObj ? tempObj[keyArr[i]] : null // key值对应的值
   	};
 };
-	
+
 /*
  31、GetUrlParam：获取Url参数，返回一个对象
  * */
@@ -939,7 +941,7 @@ function GetUrlParam(){
 	return params;
 }
 // ?a=1&b=2&c=3 ==> {a: "1", b: "2", c: "3"}
-	
+
 
 /*
  32、downloadFile：base64数据导出文件，文件下载
@@ -971,7 +973,7 @@ function downloadFile(filename, data){
 //33、toFullScreen：全屏
 function toFullScreen(){
 	let elem = document.body;
-	elem.webkitRequestFullScreen 
+	elem.webkitRequestFullScreen
 	? elem.webkitRequestFullScreen()
 	: elem.mozRequestFullScreen
 	? elem.mozRequestFullScreen()
@@ -985,7 +987,7 @@ function toFullScreen(){
 //34、exitFullscreen：退出全屏
 function exitFullscreen(){
 	let elem = parent.document;
-	elem.webkitCancelFullScreen 
+	elem.webkitCancelFullScreen
 	? elem.webkitCancelFullScreen()
 	: elem.mozCancelFullScreen
 	? elem.mozCancelFullScreen()
@@ -1008,7 +1010,7 @@ window.requestAnimationFrame = window.requestAnimationFrame ||
 	    //为了使setTimteout的尽可能的接近每秒60帧的效果
 	    window.setTimeout(callback, 1000 / 60);
 	};
-	
+
 window.cancelAnimationFrame = window.cancelAnimationFrame ||
 	Window.webkitCancelAnimationFrame ||
 	window.mozCancelAnimationFrame ||
@@ -1018,7 +1020,7 @@ window.cancelAnimationFrame = window.cancelAnimationFrame ||
 	    //为了使setTimteout的尽可能的接近每秒60帧的效果
 	    window.clearTimeout(id);
 	}
-	
+
 /*
  36、_isNaN：检查数据是否是非数字值
  原生的isNaN会把参数转换成数字(valueof)，而null、true、false以及长度小于等于1的数组(元素为非NaN数据)会被转换成数字，这不是我想要的
@@ -1097,21 +1099,21 @@ Object.values = Object.values || function values(object) {
 Array.prototype.fill = Array.prototype.fill || function fill(value, start, end) {
 	let ctx = this
 	let length = ctx.length;
-	
+
 	start = parseInt(start)
 	if(isNaN(start)){
 		start = 0
 	}else if (start < 0) {
     	start = -start > length ? 0 : (length + start);
   	}
-  	
+
   	end = parseInt(end)
   	if(isNaN(end) || end > length){
   		end = length
   	}else if (end < 0) {
         end += length;
     }
-    
+
     while (start < end) {
         ctx[start++] = value;
     }
@@ -1125,16 +1127,16 @@ Array.prototype.fill = Array.prototype.fill || function fill(value, start, end) 
 Array.prototype.includes = Array.prototype.includes || function includes(value, start){
 	let ctx = this
 	let length = ctx.length;
-	
+
 	start = parseInt(start)
 	if(isNaN(start)){
 		start = 0
 	}else if (start < 0) {
     	start = -start > length ? 0 : (length + start);
   	}
-	
+
 	let index = ctx.indexOf(value)
-	
+
 	return index >= start;
 }
 
@@ -1143,12 +1145,12 @@ Array.prototype.includes = Array.prototype.includes || function includes(value, 
  * */
 Array.prototype.find = Array.prototype.find || function find(fn, ctx){
 	fn = fn.bind(ctx)
-	
+
 	let result;
 	this.some((value, index, arr) => {
 		return fn(value, index, arr) ? (result = value, true) : false
 	})
-	
+
 	return result
 }
 
@@ -1157,12 +1159,12 @@ Array.prototype.find = Array.prototype.find || function find(fn, ctx){
  * */
 Array.prototype.findIndex = Array.prototype.findIndex || function findIndex(fn, ctx){
 	fn = fn.bind(ctx)
-	
+
 	let result;
 	this.some((value, index, arr) => {
 		return fn(value, index, arr) ? (result = index, true) : false
 	})
-	
+
 	return result
 }
 
@@ -1206,7 +1208,4 @@ document.addEventListener('keydown', function(event){
 });
 ```
 
-
-
-> 原文链接：# [JS开发常用工具函数](https://segmentfault.com/a/1190000019601333)
-
+> 原文链接：# [JS 开发常用工具函数](https://segmentfault.com/a/1190000019601333)

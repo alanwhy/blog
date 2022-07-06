@@ -1,4 +1,5 @@
 ### 判断类型
+
 ```
 /**
  * 判断传入参数是什么类型
@@ -61,6 +62,7 @@ const numberToChinese = (num) => {
 ```
 
 ### 数组去重
+
 ```
 const unique = (arr) => {
     if (Array.hasOwnProperty('from')) {
@@ -79,6 +81,7 @@ const unique = (arr) => {
 ```
 
 ### 将类数组转换为数组
+
 ```
 const formArray = (ary) => {
     var arr = [];
@@ -92,6 +95,7 @@ const formArray = (ary) => {
 ```
 
 ### 字符转换
+
 ```
 /**
  * 字符转换
@@ -129,5 +133,4 @@ const changeCase = (str, type) => {
 }
 ```
 
-> 参考原文：# [前端常用60余种工具方法](https://segmentfault.com/a/1190000022736837)
-
+> 参考原文：# [前端常用 60 余种工具方法](https://segmentfault.com/a/1190000022736837)

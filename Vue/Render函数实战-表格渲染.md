@@ -1,5 +1,15 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:28
+ * @LastEditTime: 2022-07-06 09:58:34
+ * @LastEditors: wuhaoyuan
+ * @Description:
+ * @FilePath: /blog/Vue/Render函数实战-表格渲染.md
+-->
+
 直接贴代码，具体内容看代码内注释
 ###index.html
+
 ```
 <!DOCTYPE html>
 <html lang="zh">
@@ -24,7 +34,9 @@
 
 </html>
 ```
+
 ###style.css
+
 ```
 [v-cloak] {
   display: none;
@@ -66,7 +78,9 @@ table th a:hover {
   color: #3399ff;
 }
 ```
+
 ###index.js 主要钩子函数
+
 ```
 var app = new Vue({
   el: "#app",
@@ -120,7 +134,9 @@ var app = new Vue({
   },
 })
 ```
+
 ###table.js
+
 ```
 Vue.component("vTable", {
   props: {
@@ -257,6 +273,5 @@ Vue.component("vTable", {
 })
 ```
 
-
-> 代码原文：《Vue.js实战》-- 梁灏
-github地址：[https://github.com/alanwhy/vue_render](https://github.com/alanwhy/vue_render)
+> 代码原文：《Vue.js 实战》-- 梁灏
+> github 地址：[https://github.com/alanwhy/vue_render](https://github.com/alanwhy/vue_render)

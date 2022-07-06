@@ -1,6 +1,15 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:29
+ * @LastEditTime: 2022-07-06 09:58:08
+ * @LastEditors: wuhaoyuan
+ * @Description: 
+ * @FilePath: /blog/SuperMap/SuperMap-for-leaflet加载ogc-wms平面服务.md
+-->
 在线运行地址：[http://iclient.supermap.io/examples/leaflet/editor.html#WMSLayer](http://iclient.supermap.io/examples/leaflet/editor.html#WMSLayer)
 
 复制如下代码到编辑器 更换对应的参数 运行
+
 ```
 <!DOCTYPE html>
 <html>

@@ -1,7 +1,7 @@
 #一、需求分析
-通过点击一组图片中的某一张图片，显示出当前的图片在对话框中，并可以通过走马灯的方式左右切换出其他图片，图片大小和对话框大小为自适应
-#二、实现步骤
+通过点击一组图片中的某一张图片，显示出当前的图片在对话框中，并可以通过走马灯的方式左右切换出其他图片，图片大小和对话框大小为自适应 #二、实现步骤
 ##1、布局代码
+
 ```
 <!--图片略缩图展示-->
 <span class="tab-pic" v-if="isTabContentShow" v-for="data of tabledata">
@@ -43,8 +43,10 @@
       </div>
     </el-dialog>
 ```
+
 ##2、逻辑代码
-###2.1、data中的设置
+###2.1、data 中的设置
+
 ```
   data() {
     return {
@@ -59,7 +61,9 @@
       ......
   },
 ```
+
 ###2.2、方法代码
+
 ```
   methods: {
     ......
@@ -79,9 +83,9 @@
     }
   },
 ```
+
 ##3、样式表
-自己搞定(╯•̀ὤ•́)╯
-#三、效果展示
+自己搞定(╯•̀ὤ•́)╯ #三、效果展示
 ![图片展示.png](https://upload-images.jianshu.io/upload_images/12877063-55a3d2075881cc32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![图片弹出展示01.png](https://upload-images.jianshu.io/upload_images/12877063-c72869ddc7672765.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -89,7 +93,8 @@
 ![图片弹出展示02.png](https://upload-images.jianshu.io/upload_images/12877063-e84249672cacef28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #四、自卖自夸
-- UI设计很舒适，符合大众审美
--  图片展示方式很nice
- - 走马灯与对话框完美自适应
+
+- UI 设计很舒适，符合大众审美
+- 图片展示方式很 nice
+- 走马灯与对话框完美自适应
 - 可用性很强啊！

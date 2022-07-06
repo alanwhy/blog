@@ -1,12 +1,13 @@
-##一、官网下载nginx for windows包
-下载链接：[nginx官网](http://nginx.org/)
+##一、官网下载 nginx for windows 包
+下载链接：[nginx 官网](http://nginx.org/)
 解压后如图
 ![nginx.png](https://upload-images.jianshu.io/upload_images/12877063-365414780a1d90de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ##二、三种配置方式
-###1、域名访问方式（示例：1个nignx拖3个iserver，三个域名请求）
+###1、域名访问方式（示例：1 个 nignx 拖 3 个 iserver，三个域名请求）
 （1）配置文件路径：./nginx/conf/nginx.conf
 （2）默认配置文件
+
 ```
 
 #user  nobody;
@@ -126,18 +127,24 @@ http {
 
 }
 ```
-（3）可直接在nginx目录输入
+
+（3）可直接在 nginx 目录输入
+
 ```
 start nginx
 ```
-启动nginx，浏览器输入http://localhost，即可看到如下界面即启动成功
+
+启动 nginx，浏览器输入 http://localhost，即可看到如下界面即启动成功
 ![成功.png](https://upload-images.jianshu.io/upload_images/12877063-6a1656e828fcff05.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 输入
+
 ```
 nginx -s quit
 ```
-退出nginx
+
+退出 nginx
 （4）修改配置问题如下
+
 ```
 #user  nobody;
 worker_processes  1;
@@ -285,25 +292,28 @@ http {
 
 说明：
 
-- 加入1个upstream站点进行负载，定义负载均衡设备的Ip及设备状态
-- 将3个server中配置proxy_pass代理，格式为：http:// + upstream名称
-- weight为权重，即优先运行，数值越大，权重越高
-- 每一个请求按访问ip的hash结果分配。这样每一个访客固定访客一个后端服务器，能够解决session的问题
+- 加入 1 个 upstream 站点进行负载，定义负载均衡设备的 Ip 及设备状态
+- 将 3 个 server 中配置 proxy_pass 代理，格式为：http:// + upstream 名称
+- weight 为权重，即优先运行，数值越大，权重越高
+- 每一个请求按访问 ip 的 hash 结果分配。这样每一个访客固定访客一个后端服务器，能够解决 session 的问题
 
-（5）可以修改文件路径C:\Windows\System32\drivers\etc下的hosts文件，进行域名代理测试，示例修改如下
+（5）可以修改文件路径 C:\Windows\System32\drivers\etc 下的 hosts 文件，进行域名代理测试，示例修改如下
+
 ```
 127.0.0.1 localhost
-192.168.46.228 www.baidu1.com 
-192.168.46.228 www.baidu2.com 
-192.168.46.228 www.baidu3.com 
+192.168.46.228 www.baidu1.com
+192.168.46.228 www.baidu2.com
+192.168.46.228 www.baidu3.com
 ```
+
 （6）通过浏览器访问地址：
 www.baidu1.com:8888/iserver、
 www.baidu1.com:8887/iserver、
 www.baidu1.com:8886/iserver 等等
-均可访问到iserver界面
-###2、多服务负载（示例：3个nignx拖3个iserver）
+均可访问到 iserver 界面
+###2、多服务负载（示例：3 个 nignx 拖 3 个 iserver）
 配置如下：
+
 ```
 #user  nobody;
 worker_processes  1;
@@ -459,8 +469,10 @@ http {
 
 }
 ```
-###3、单服务负载（示例：1个nignx拖3个iserver）
+
+###3、单服务负载（示例：1 个 nignx 拖 3 个 iserver）
 配置如下
+
 ```
 #user  nobody;
 worker_processes  1;
@@ -586,5 +598,6 @@ http {
 
 }
 ```
-> 具体的nginx的参数配置可参考 [Nginx反向代理以及负载均衡配置](https://www.cnblogs.com/Miss-mickey/p/6734831.html)
-新的参考文章：[Nginx访问控制与参数调优](https://segmentfault.com/a/1190000018505993)
+
+> 具体的 nginx 的参数配置可参考 [Nginx 反向代理以及负载均衡配置](https://www.cnblogs.com/Miss-mickey/p/6734831.html)
+> 新的参考文章：[Nginx 访问控制与参数调优](https://segmentfault.com/a/1190000018505993)

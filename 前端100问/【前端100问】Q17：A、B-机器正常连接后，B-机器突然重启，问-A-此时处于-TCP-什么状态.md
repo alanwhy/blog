@@ -1,3 +1,11 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:29
+ * @LastEditTime: 2022-07-06 09:28:45
+ * @LastEditors: wuhaoyuan
+ * @Description: 
+ * @FilePath: /blog/前端100问/【前端100问】Q17：A、B-机器正常连接后，B-机器突然重启，问-A-此时处于-TCP-什么状态.md
+-->
 ### 写在前面
 
 > 此系列来源于开源项目：[前端 100 问：能搞懂 80%的请把简历给我](https://github.com/yygmind/blog/issues/43)

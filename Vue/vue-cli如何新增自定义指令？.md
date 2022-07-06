@@ -1,8 +1,9 @@
 ###1.创建局部指令
+
 ```
 var app = new Vue({
     el: '#app',
-    data: {    
+    data: {
     },
     // 创建指令(可以多个)
     directives: {
@@ -21,7 +22,9 @@ var app = new Vue({
     }
 })
 ```
+
 ###2.全局指令
+
 ```
 Vue.directive('dir2', {
     inserted(el) {
@@ -29,7 +32,9 @@ Vue.directive('dir2', {
     }
 })
 ```
+
 ###3.指令的使用
+
 ```
 <div id="app">
     <div v-dir1></div>

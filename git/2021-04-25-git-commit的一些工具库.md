@@ -1,23 +1,23 @@
 > 建议阅读：[git commit 规范参考
-](https://www.jianshu.com/p/cac0fe9c34c4)
-原文链接：[# [你可能已经忽略的git commit规范](https://segmentfault.com/a/1190000021634111)
-](https://segmentfault.com/a/1190000021634111)
+> ](https://www.jianshu.com/p/cac0fe9c34c4)
+> 原文链接：[# [你可能已经忽略的 git commit 规范](https://segmentfault.com/a/1190000021634111)
+> ](https://segmentfault.com/a/1190000021634111)
 
 ### commitizen
 
-1. 首先通过上下键控制指向你想要的 type 类型，分别对应有上面提到的feat、fix、docs、perf等:
+1. 首先通过上下键控制指向你想要的 type 类型，分别对应有上面提到的 feat、fix、docs、perf 等:
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-bb54886e2b6b6139.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 2. 然后会让你选择本次提交影响到的文件:
-![image.png](https://upload-images.jianshu.io/upload_images/12877063-437a0737281e7ea7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+   ![image.png](https://upload-images.jianshu.io/upload_images/12877063-437a0737281e7ea7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 3. 后面会让你分别写一个简短的和详细的提交描述:
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-344b97df205a6df4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-4. 最后会让你去判断本次提交是否是BREAKING CHANGE或者有关联已开启的issue:
-![image.png](https://upload-images.jianshu.io/upload_images/12877063-9bc06b42cff827a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+4. 最后会让你去判断本次提交是否是 BREAKING CHANGE 或者有关联已开启的 issue:
+   ![image.png](https://upload-images.jianshu.io/upload_images/12877063-9bc06b42cff827a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 如何安装
 
@@ -91,7 +91,7 @@ git commit -m ':bug: 问题fix'
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-ca7112fea660a548.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#### 最后附上一个之前项目针对git commit配置的package.json，作为参考:
+#### 最后附上一个之前项目针对 git commit 配置的 package.json，作为参考:
 
 ```json
 {
@@ -102,9 +102,7 @@ git commit -m ':bug: 问题fix'
   "main": "dist/ts-axios.umd.js",
   "module": "dist/ts-axios.es5.js",
   "typings": "dist/types/ts-axios.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "author": "fengshuan <1263215592@qq.com>",
   "repository": {
     "type": "git",
@@ -137,10 +135,7 @@ git commit -m ':bug: 问题fix'
     }
   },
   "lint-staged": {
-    "{src,test}/**/*.ts": [
-      "prettier --write",
-      "git add"
-    ]
+    "{src,test}/**/*.ts": ["prettier --write", "git add"]
   },
   "config": {
     "commitizen": {
@@ -153,15 +148,8 @@ git commit -m ':bug: 问题fix'
     },
     "testEnvironment": "node",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/test/"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "coveragePathIgnorePatterns": ["/node_modules/", "/test/"],
     "coverageThreshold": {
       "global": {
         "branches": 90,
@@ -170,18 +158,14 @@ git commit -m ':bug: 问题fix'
         "statements": 95
       }
     },
-    "collectCoverageFrom": [
-      "src/*.{js,ts}"
-    ]
+    "collectCoverageFrom": ["src/*.{js,ts}"]
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
+    "extends": ["@commitlint/config-conventional"]
   },
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",

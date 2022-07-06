@@ -101,6 +101,5 @@ git count-objects -vH  # 此时就和本地一样,从库减小了
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-2438e96d3efdeb6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-
 > 原文参考：[git 项目过大清理](https://www.cnblogs.com/ziyue7575/p/45538b0b7dbe1cbbca5e4ca1a90810ca.html)
 > 好像是个更好的方法：[使用 bfg 快速清理 git 历史大文件](https://blog.csdn.net/qq_36254947/article/details/108641438)

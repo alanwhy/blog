@@ -1,3 +1,12 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:28
+ * @LastEditTime: 2022-07-06 10:00:04
+ * @LastEditors: wuhaoyuan
+ * @Description:
+ * @FilePath: /blog/web进阶知识/手写call函数.md
+-->
+
 ```
 // 方法1
 Function.prototype.call2 = function (context) {
@@ -57,4 +66,4 @@ var test = function (a, b) { console.log(a, b) }
 test.call4({}, 1, 2)
 ```
 
-> 原文链接：[手写代码，简单实现call](https://github.com/airuikun/Weekly-FE-Interview/issues/6)
+> 原文链接：[手写代码，简单实现 call](https://github.com/airuikun/Weekly-FE-Interview/issues/6)

@@ -1,7 +1,17 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:28
+ * @LastEditTime: 2022-07-06 10:00:23
+ * @LastEditors: wuhaoyuan
+ * @Description:
+ * @FilePath: /blog/web进阶知识/JS类型判断typeof、instanceof、constructor、Object-prototype-toString-call().md
+-->
+
 ###一、JavaScript 数据类型
 JavaScript 数据类型有两种，分别是基本数据类型和引用数据类型。
 
 **基本数据类型**
+
 - Number
 - String
 - Boolean
@@ -10,6 +20,7 @@ JavaScript 数据类型有两种，分别是基本数据类型和引用数据类
 - Symbol (ES6 新增，表示独一无二的值)
 
 **引用数据类型**
+
 - Object
 - Function
 - Array
@@ -20,6 +31,7 @@ JavaScript 数据类型有两种，分别是基本数据类型和引用数据类
 
 ######1.typeof
 这应该初学者首次接触的类型判断方法了，它返回一个表示数据类型的字符串，返回结果包括：
+
 ```
 typeof Symbol();
 // symbol  正确
@@ -42,6 +54,7 @@ typeof new Date();
 typeof new RegExp();
 //object 无效
 ```
+
 不能判断 array 和 null
 
 **typeof 缺点**
@@ -49,6 +62,7 @@ typeof new RegExp();
 
 ######2.instanceof
 `instanceof`运算符用于检测构造函数的 `prototype` 属性是否出现在某个实例对象的原型链上。简单来说就是 `instanceof` 是用来判断 A 是否为 B 的实例，表达式为
+
 > A (object) instanceof B (constructor)
 
 如果 A 是 B 的实例，则返回 true,否则返回 false。
@@ -97,7 +111,6 @@ new RegExp() instanceof RegExp//true
 
 - 是否处于原型链上的判断方法不严谨
 
-
 instanceof 方法判断的是是否处于原型链上，而不是是不是处于原型链最后一位，所以会出现下面这种情况：
 
 ```
@@ -120,6 +133,7 @@ A instanceof Object //true
 - 无法判断字面量方式创建的基本数据类型
 
 对于基本数据类型来说，字面量方式创建出来的结果和实例方式创建的是有一定区别的
+
 ```
 console.log(1 instanceof Number)//false
 console.log(new Number(1) instanceof Number)//true

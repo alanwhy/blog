@@ -7,7 +7,7 @@ fatal: unable to access 'https://github.com/visgl/loaders.gl.git/': GnuTLS recv 
 
 fatal: unable to access 'https://github.com/visgl/loaders.gl.git/': Failed to connect to github.com port 443: Connection refused
 
-// or 
+// or
 
 fatal: unable to access 'https://github.com/visgl/loaders.gl.git/': Could not resolve host: github.com
 ```
@@ -16,12 +16,14 @@ fatal: unable to access 'https://github.com/visgl/loaders.gl.git/': Could not re
 
 1. 首先保证不能访问 google
 2. 输入命令
+
 ```shell
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
 
 3. 如果不行，则输入命令
+
 ```shell
 git config --global url.git://github.com/.insteadOf https://github.com/
 ```

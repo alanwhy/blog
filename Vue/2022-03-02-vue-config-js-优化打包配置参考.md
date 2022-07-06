@@ -252,4 +252,4 @@ module.exports = {
 };
 ```
 
-原文链接：[vue.config.js打包优化(有效)](https://blog.csdn.net/weixin_44021417/article/details/106668042)
+原文链接：[vue.config.js 打包优化(有效)](https://blog.csdn.net/weixin_44021417/article/details/106668042)

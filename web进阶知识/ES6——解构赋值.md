@@ -1,14 +1,15 @@
-原文链接：[小邵教你玩转ES6](https://juejin.im/post/5b7b95206fb9a019bd2463d8)
-#解构赋值
+原文链接：[小邵教你玩转 ES6](https://juejin.im/post/5b7b95206fb9a019bd2463d8) #解构赋值
 解构赋值主要分为对象的解构和数组的解构，在没有解构赋值的时候，我们赋值是这样的
+
 ```
 let arr = [0,1,2]
 let a = arr[0]
 let b = arr[1]
 let c = arr[2]
 ```
-这样写很繁琐，那么我们有没办法既声明，又赋值，更优雅的写法呢？肯定是有的，那就是**解构赋值**，解构赋值，简单理解就是等号的左边和右边相等。
-##一、数组的解构赋值
+
+这样写很繁琐，那么我们有没办法既声明，又赋值，更优雅的写法呢？肯定是有的，那就是**解构赋值**，解构赋值，简单理解就是等号的左边和右边相等。 ##一、数组的解构赋值
+
 ```
 let arr = [0,1,2]
 let [a,b,c] = arr
@@ -16,7 +17,9 @@ console.log(a) // 0
 console.log(b) // 1
 console.log(c) // 2
 ```
+
 但是很多时候，数据并非一一对应的，并且我们希望得到一个默认值
+
 ```
 let arr = [,1,2]
 let [a='我是默认值',b,c] = arr
@@ -24,8 +27,10 @@ console.log(a) // '我是默认值'
 console.log(b) // 1
 console.log(c) // 2
 ```
-从这个例子可以看出，在解构赋值的过程中，a=undefined时，会使用默认值
-那么当a=null时呢？当a=null时，那么a就不会使用默认值，而是使用null
+
+从这个例子可以看出，在解构赋值的过程中，a=undefined 时，会使用默认值
+那么当 a=null 时呢？当 a=null 时，那么 a 就不会使用默认值，而是使用 null
+
 ```
 // 数组的拼接
 let a = [0,1,2]
@@ -36,6 +41,7 @@ console.log(c) // [0,1,2,3,4,5]
 let d = [...a,...b]
 console.log(d) // [0,1,2,3,4,5]
 ```
+
 ```
 // 数组的克隆
 // 假如我们简单地把一个数组赋值给另外一个变量
@@ -45,9 +51,11 @@ b.push(4)
 console.log(a) // [0,1,2,3,4]
 console.log(b) // [0,1,2,3,4]
 ```
-因为这只是简单的把引用地址赋值给b，而不是**重新开辟一个内存地址**，所以
-a和b共享了同一个内存地址，该内存地址的更改，会影响到所有引用该地址的变量
+
+因为这只是简单的把引用地址赋值给 b，而不是**重新开辟一个内存地址**，所以
+a 和 b 共享了同一个内存地址，该内存地址的更改，会影响到所有引用该地址的变量
 那么用下面的方法，把数组进行克隆一份，互不影响
+
 ```
 let a = [0,1,2,3]
 let b = [...a]
@@ -55,15 +63,19 @@ b.push(4)
 console.log(a) // [0,1,2,3]
 console.log(b) // [0,1,2,3,4]
 ```
+
 ##二、对象的解构赋值
 对象的解构赋值和数组的解构赋值其实类似，但是数组的数组成员是有序的
 而对象的属性则是无序的，所以对象的解构赋值简单理解是等号的左边和右边的结构相同
+
 ```
 let {name,age} = {name:"swr",age:28}
 console.log(name) // 'swr'
 console.log(age) // 28
 ```
-对象的解构赋值是根据key值进行匹配
+
+对象的解构赋值是根据 key 值进行匹配
+
 ```
 // 这里可以看出，左侧的name和右侧的name，是互相匹配的key值
 // 而左侧的name匹配完成后，再赋值给真正需要赋值的Name
@@ -71,7 +83,9 @@ let { name:Name,age } = { name:'swr',age:28 }
 console.log(Name) // 'swr'
 console.log(age) // 28
 ```
+
 那么当变量已经被声明了呢？
+
 ```
 let name,age
 // 需要用圆括号，包裹起来
@@ -79,13 +93,16 @@ let name,age
 console.log(name) // 'swr'
 console.log(age) // 28
 ```
+
 变量能否也设置默认值？
+
 ```
 let {name="swr",age} = {age:28}
 console.log(name) // 'swr'
 console.log(age) // 28
 // 这里规则和数组的解构赋值一样，当name = undefined时，则会使用默认值
 ```
+
 ```
 let [a] = [{name:"swr",age:28}]
 console.log(a) // {name:"swr",age:28}
@@ -93,6 +110,7 @@ console.log(a) // {name:"swr",age:28}
 let { length } = "hello swr"
 console.log(length) // 9
 ```
+
 ```
 function ajax({method,url,type='params'}){
     console.log(method) // 'get'
@@ -102,8 +120,10 @@ function ajax({method,url,type='params'}){
 
 ajax({method:"get",url:"/"})
 ```
+
 ##三、扩展运算符
-我们先看下代码，在以往，我们给函数传不确定参数数量时，是通过arguments来获取的
+我们先看下代码，在以往，我们给函数传不确定参数数量时，是通过 arguments 来获取的
+
 ```
 function sum() {
   console.log(arguments) // { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5, '5': 6 }
@@ -118,7 +138,9 @@ function sum() {
 
 console.log(sum(1,2,3,4,5,6)) // 21
 ```
+
 接下来我们用扩展运算符看看
+
 ```
 function sum(...args){ // 使用...扩展运算符
     console.log(args) // [ 1, 2, 3, 4, 5, 6 ] args是一个数组
@@ -127,7 +149,9 @@ function sum(...args){ // 使用...扩展运算符
 
 console.log(sum(1,2,3,4,5,6)) // 21
 ```
-得到的args是一个数组，直接对数组进行操作会比对伪数组进行操作更加方便，还有一些注意点需要注意
+
+得到的 args 是一个数组，直接对数组进行操作会比对伪数组进行操作更加方便，还有一些注意点需要注意
+
 ```
 // 正确的写法 扩展运算符只能放在最后一个参数
 function sum(a,b,...args){
@@ -145,7 +169,9 @@ function sum(...args,a,b){
 
 sum(1,2,3,4,5,6)
 ```
+
 我们可以对比下扩展运算符的方便之处
+
 ```
 // 以往我们是这样拼接数组的
 let arr1 = [1,2,3]
@@ -159,6 +185,7 @@ let arr2 = [4,5,6]
 let arr3 = [...arr1,...arr2]
 console.log(arr3) // [ 1, 2, 3, 4, 5, 6 ]
 ```
+
 ```
 // 以往我们这样来取数组中最大的值
 function max(...args){
@@ -172,6 +199,7 @@ function max(...args){
 }
 console.log(max(1,2,3,4,5,6)) // 6
 ```
+
 ```
 // 扩展运算符可以把argument转为数组
 function max(){
@@ -191,7 +219,9 @@ let likeArr = { "0":1,"1":2,"length":2 }
 let arr = Array.from(likeArr)
 console.log(arr) // [1,2]
 ```
+
 ####对象也可以使用扩展运算符
+
 ```
 // 以往我们这样合并对象
 let name = { name:"邵威儒" }
@@ -206,8 +236,9 @@ let age = { age:28 }
 let person = {...name,...age}
 console.log(person) // { name: '邵威儒', age: 28 }
 ```
-需要注意的是，通过扩展运算符和Object.assign对对象进行合并的行为，是属于**浅拷贝**，那么我们在开发当中，经常需要对对象进行**深拷贝**，接下来我们看看如何进行**深拷贝**。
-#####方法一：利用JSON.stringify和JSON.parse
+
+需要注意的是，通过扩展运算符和 Object.assign 对对象进行合并的行为，是属于**浅拷贝**，那么我们在开发当中，经常需要对对象进行**深拷贝**，接下来我们看看如何进行**深拷贝**。 #####方法一：利用 JSON.stringify 和 JSON.parse
+
 ```
 let swr = {
     name:"邵威儒",
@@ -223,9 +254,10 @@ console.log(swr) // { name: '邵威儒', age: 28, pets: [ '小黄', '旺财' ] }
 // 但是swrcopy却不会受swr影响
 console.log(swrcopy) // { name: '邵威儒', age: 28, pets: [ '小黄' ] }
 ```
-这种方式进行深拷贝，只针对json数据这样的键值对有效
-对于函数等等反而无效，不好用，接着继续看方法二、三。
-#####方法二
+
+这种方式进行深拷贝，只针对 json 数据这样的键值对有效
+对于函数等等反而无效，不好用，接着继续看方法二、三。 #####方法二
+
 ```
 function deepCopy(fromObj,toObj) { // 深拷贝函数
   // 容错
@@ -234,7 +266,7 @@ function deepCopy(fromObj,toObj) { // 深拷贝函数
   if(fromObj instanceof Date) return new Date(fromObj) // 当fromObj为Date
 
   toObj = toObj || {}
-  
+
   for(let key in fromObj){ // 遍历
     if(typeof fromObj[key] !== 'object'){ // 是否为对象
       toObj[key] = fromObj[key] // 如果为普通值，则直接赋值
@@ -243,7 +275,7 @@ function deepCopy(fromObj,toObj) { // 深拷贝函数
         toObj[key] = null
       }else{
         toObj[key] = new fromObj[key].constructor // 如果为object，则new这个object指向的构造函数
-        deepCopy(fromObj[key],toObj[key]) // 递归          
+        deepCopy(fromObj[key],toObj[key]) // 递归
       }
     }
   }
@@ -272,7 +304,9 @@ console.log(dogcopy) // { name: '小白',
                           sex: '公',
                           firends: [ { name: '小黄', sex: '母' } ] }
 ```
+
 #####方法三
+
 ```
 let dog = {
   name:"小白",

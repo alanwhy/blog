@@ -1,3 +1,12 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-07-06 09:22:29
+ * @LastEditTime: 2022-07-06 09:53:16
+ * @LastEditors: wuhaoyuan
+ * @Description:
+ * @FilePath: /blog/前端100问/【前端100问】Q71：实现一个字符串匹配算法，从长度为-n-的字符串-S-中，查找是否存在字符串-T，T-的长度是-m，若存在返回所在位置.md
+-->
+
 ### 写在前面
 
 > 此系列来源于开源项目：[前端 100 问：能搞懂 80%的请把简历给我](https://github.com/yygmind/blog/issues/43)

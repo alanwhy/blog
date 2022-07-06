@@ -1,18 +1,21 @@
 > 视频地址：[https://www.imooc.com/learn/1152](https://www.imooc.com/learn/1152)
-源码链接：[https://github.com/alanwhy/axios-api](https://github.com/alanwhy/axios-api)
+> 源码链接：[https://github.com/alanwhy/axios-api](https://github.com/alanwhy/axios-api)
 
 业务场景是实现一个用户信息列表，具有增删改查的功能，页面操作本文不做说明，具体可以查看源码链接运行看
 
-###axios封装文件目录
+###axios 封装文件目录
+
 ```
 axios-app
   |- service
     |- contactApi.js // api的url等
     |- http.js // 封装文件
   |- views
-    |- List.vue 
+    |- List.vue
 ```
-###api的封装
+
+###api 的封装
+
 ```
 const CONTACT_API = {
   // 获取用户的列表
@@ -43,7 +46,9 @@ const CONTACT_API = {
 }
 export default CONTACT_API
 ```
-###axios的封装
+
+###axios 的封装
+
 ```
 import axios from "axios"
 // 引入上面文件封装的api路径
@@ -60,7 +65,7 @@ let instance = axios.create({
   timeout: 1000
 })
 
-const Http = {} // 包裹请求方法的容器 
+const Http = {} // 包裹请求方法的容器
 
 // 请求格式统一
 for (let key in service) {
@@ -135,8 +140,11 @@ instance.interceptors.response.use(res => {
 
 export default Http
 ```
+
 ### 暴露全局
-到main.js中加入代码
+
+到 main.js 中加入代码
+
 ```
 ...
 import Http from "./service/http"
@@ -144,7 +152,9 @@ import Http from "./service/http"
 Vue.prototype.$Http = Http
 ...
 ```
+
 ###接口请求使用方式举例
+
 ```
   // 获取用户信息
     async getList() {

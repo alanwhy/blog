@@ -437,7 +437,6 @@ section{
 }
 ```
 
-
 5.保持选择器的低权重
 
 css 的选择器并不都是平等的。当初学习 CSS 时，我总是认为选择器会覆盖它上面的所有内容。然而，情况并非如此
@@ -457,31 +456,31 @@ a.active {
 }
 ```
 
-我们希望.active类中设置的样式会生效使按钮变为红色。但是它并不会起作用，因为按钮在上面有一个ID选择器，它同样设置了background-color，ID选择器具有更高的权重，所以按钮的颜色是蓝色的
+我们希望.active 类中设置的样式会生效使按钮变为红色。但是它并不会起作用，因为按钮在上面有一个 ID 选择器，它同样设置了 background-color，ID 选择器具有更高的权重，所以按钮的颜色是蓝色的
 
-权重也会叠加，于是a#button.active的权重要比a#button的高。一开始就使用高权重的选择器会导致你在后面的维护中不断的使用更高权重的选择器
+权重也会叠加，于是 a#button.active 的权重要比 a#button 的高。一开始就使用高权重的选择器会导致你在后面的维护中不断的使用更高权重的选择器
 
-6.使用rem进行全局大小调整；使用em进行局部大小调整
+6.使用 rem 进行全局大小调整；使用 em 进行局部大小调整
 
-在设置根目录的基本字体大小后，例如html字体大小：15px；，可以将包含元素的字体大小设置为rem
+在设置根目录的基本字体大小后，例如 html 字体大小：15px；，可以将包含元素的字体大小设置为 rem
 
 ```
-article {    
-    font-size: 1.25rem;  
-}    
-aside {    
-    font-size: .9rem;  
+article {
+    font-size: 1.25rem;
+}
+aside {
+    font-size: .9rem;
 }
 ```
 
-将文本元素的字体大小设置为em
+将文本元素的字体大小设置为 em
 
 ```
-h2 {    
-    font-size: 2em;  
-}    
-p {    
-    font-size: 1em;  
+h2 {
+    font-size: 2em;
+}
+p {
+    font-size: 1em;
 }
 ```
 
@@ -493,4 +492,4 @@ p {
 
 [我在 vue 开发中的小技巧](https://www.jianshu.com/p/baedcedc3191)
 
-[如何提升你的CSS技能，掌握这20个css技巧即可[完整版]](http://www.imooc.com/article/283531)
+[如何提升你的 CSS 技能，掌握这 20 个 css 技巧即可[完整版]](http://www.imooc.com/article/283531)
