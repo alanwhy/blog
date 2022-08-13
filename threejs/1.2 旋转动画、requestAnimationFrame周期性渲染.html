@@ -1,0 +1,76 @@
+<!--
+ * @Author: wuhaoyuan
+ * @Date: 2022-08-13 15:03:12
+ * @LastEditTime: 2022-08-13 16:04:18
+ * @LastEditors: wuhaoyuan
+ * @Description: 
+ * @FilePath: /blog/threejs/1.2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+    <script src="https://www.unpkg.com/three@0.143.0/build/three.js"></script>
+  </head>
+  <body>
+    <script>
+      var scene = new THREE.Scene();
+
+      var geometry = new THREE.BoxGeometry(100, 100, 100);
+      //创建一个球体几何对象
+      // var geometry = new THREE.SphereGeometry(60, 40, 40);
+
+      var material = new THREE.MeshLambertMaterial({
+        color: 0x0000ff,
+      });
+      var mesh = new THREE.Mesh(geometry, material);
+      scene.add(mesh);
+
+      var point = new THREE.PointLight(0xffffff);
+      point.position.set(400, 200, 300);
+      scene.add(point);
+
+      var ambient = new THREE.AmbientLight(0x444444);
+      scene.add(ambient);
+
+      var width = window.innerWidth; //窗口宽度
+      var height = window.innerHeight; //窗口高度
+      var k = width / height; //窗口宽高比
+      var s = 200; //三维场景显示范围控制系数，系数越大，显示的范围越大
+
+      var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
+      camera.position.set(200, 300, 200); //设置相机位置
+      camera.lookAt(scene.position);
+
+      var renderer = new THREE.WebGLRenderer();
+      renderer.setSize(width, height); //设置渲染区域尺寸
+      renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
+      document.body.appendChild(renderer.domElement); //body元素中插入canvas对象
+      //执行渲染操作   指定场景、相机作为参数
+      // 渲染函数
+
+      let T0 = new Date(); //上次时间
+      function render() {
+        let T1 = new Date(); //本次时间
+        let t = T1 - T0; //时间差
+        T0 = T1; //把本次时间赋值给上次时间
+        requestAnimationFrame(render); //请求再次执行渲染函数render
+        renderer.render(scene, camera); //执行渲染操作
+        mesh.rotateY(0.001 * t); //旋转角速度0.001弧度每毫秒
+      }
+
+      // setInterval(() => {
+      render();
+      // }, 20);
+    </script>
+  </body>
+</html>
