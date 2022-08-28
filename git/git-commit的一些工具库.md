@@ -1,7 +1,8 @@
-> 建议阅读：[git commit 规范参考
-> ](https://www.jianshu.com/p/cac0fe9c34c4)
-> 原文链接：[# [你可能已经忽略的 git commit 规范](https://segmentfault.com/a/1190000021634111)
-> ](https://segmentfault.com/a/1190000021634111)
+# git-commit 的一些工具库
+
+> 建议阅读：[git commit 规范参考 ](https://www.jianshu.com/p/cac0fe9c34c4)
+
+> 原文链接： [你可能已经忽略的 git commit 规范](https://segmentfault.com/a/1190000021634111)
 
 ### commitizen
 
@@ -29,6 +30,9 @@ $ npm install --save-dev commitizen
 $ npx commitizen init cz-conventional-changelog --save-dev --save-exact
 # for npm < 5.2
 $ ./node_modules/.bin/commitizen init cz-conventional-changelog --save-dev --save-exact
+
+# 也可以用中文版来代替
+$ npx commitizen init cz-conventional-changelog-zh --save-dev --save-exact
 
 // package.json script字段中添加commit命令
 "scripts": {
