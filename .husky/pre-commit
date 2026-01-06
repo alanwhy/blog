@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run gen:tree
+# 生成过程中可能发生重命名，统一加入暂存区
+git add -A

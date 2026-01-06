@@ -1,0 +1,14 @@
+{
+  "name": "blog",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Personal blog utilities",
+  "license": "UNLICENSED",
+  "scripts": {
+    "gen:tree": "node scripts/generate-tree.js",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.0.0"
+  }
+}
