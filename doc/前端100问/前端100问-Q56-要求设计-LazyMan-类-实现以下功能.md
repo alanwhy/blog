@@ -111,46 +111,57 @@ function LazyMan(name) {
       return this;
     }
 
-    _sleep = (time) => {
-      return new Promise((resolve) => setTimeout(resolve, time * 1000));
-    };
 
-    eat(type) {
-      this._queues.push(() => {
-        console.log(`I am eating ${type}`);
-        this.next();
-      });
-      return this;
-    }
-    sleepFirst(time) {
-      this._queues.unshift(() => {
-        this._sleep(time).then(() => {
-          console.log(`等待了${time}秒`);
-          this.next();
-        });
-      });
-      return this;
-    }
+```coffeescript
+_sleep = (time) => {
+  return new Promise((resolve) => setTimeout(resolve, time * 1000));
+};
+```
 
-    sleep(time) {
-      this._queues.push(() => {
-        this._sleep(time).then(() => {
-          console.log(`等待了${time}秒`);
-          this.next();
-        });
-      });
-      return this;
-    }
+```typescript
+eat(type) {
+  this._queues.push(() => {
+    console.log(`I am eating ${type}`);
+    this.next();
+  });
+  return this;
+}
+sleepFirst(time) {
+  this._queues.unshift(() => {
+    this._sleep(time).then(() => {
+      console.log(`等待了${time}秒`);
+      this.next();
+    });
+  });
+  return this;
+}
+```
 
-    next() {
-      const fn = this._queues.shift();
-      fn && fn();
-    }
+```arcade
+sleep(time) {
+  this._queues.push(() => {
+    this._sleep(time).then(() => {
+      console.log(`等待了${time}秒`);
+      this.next();
+    });
+  });
+  return this;
+}
+```
+
+```zephir
+next() {
+  const fn = this._queues.shift();
+  fn && fn();
+}
+```
+
   }
 
   return new Man(name);
 }
-```
+
+```coffeescript
 
 ```js
 function LazyMan(username) {

@@ -1,18 +1,10 @@
-<!--
- * @Author: wuhaoyuan
- * @Date: 2022-07-06 09:22:28
- * @LastEditTime: 2022-07-06 09:54:27
- * @LastEditors: wuhaoyuan
- * @Description: 
- * @FilePath: /blog/前端性能优化/vue性能优化（续）.md
--->
 ### v-for、v-if 不要一起使用
 
 （老生常谈的东西，主要是有个比较好的图片来解释）
 
 `v-for`  的优先级其实是比 `v-if`  高的，所以当两个指令出现来一个 DOM 中，那么 `v-for`  渲染的当前列表，每一次都需要进行一次 `v-if`  的判断。而相应的列表也会重新变化，这个看起来是非常不合理的。因此当你需要进行同步指令的时候。尽量使用计算属性，先将 `v-if`  不需要的值先过滤掉。他看起像是下面这样的。
 
-```
+```javascript
 // 计算属性
 computed: {
   filterList: function () {

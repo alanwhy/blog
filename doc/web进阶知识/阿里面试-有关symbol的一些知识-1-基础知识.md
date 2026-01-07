@@ -332,4 +332,4 @@ iframe.contentWindow.Symbol.for("foo") === Symbol.for("foo");
 ```
 
 > 原文：[# [ECMAScript 6 入门](https://es6.ruanyifeng.com/)
-> ](https://es6.ruanyifeng.com/#docs/symbol)
+> ](<https://es6.ruanyifeng.com/#docs/symbol>)

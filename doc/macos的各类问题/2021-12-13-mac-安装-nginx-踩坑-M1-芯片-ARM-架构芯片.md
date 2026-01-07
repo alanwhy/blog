@@ -98,9 +98,9 @@ build scripts full access to your system.
 
 按照提示解决
 
-```
-$ sudo chown -R $(whoami) /usr/local/lib/pkgconfig
-$ chmod u+w /usr/local/lib/pkgconfig
+```bash
+sudo chown -R $(whoami) /usr/local/lib/pkgconfig
+chmod u+w /usr/local/lib/pkgconfig
 ```
 
 安装 nginx

@@ -18,7 +18,7 @@
 1. 安装插件
 
 ```shell
-$ npm install -D @parcel/optimizer-terser
+npm install -D @parcel/optimizer-terser
 ```
 
 2. 在项目根目录下新增文件 `.terserrc.js`
@@ -74,4 +74,4 @@ module.exports = {
 
 ![效果如图](/img/iShot_2022-09-01_16.59.40.png)
 
-> 参考链接：https://github.com/parcel-bundler/parcel/pull/2666
+> 参考链接：<https://github.com/parcel-bundler/parcel/pull/2666>

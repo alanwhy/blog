@@ -27,12 +27,12 @@ const s = new Set()
 [1, 2, 3, 4, 3, 2, 1].forEach(x => s.add(x))
 
 for (let i of s) {
-    console.log(i)	// 1 2 3 4
+    console.log(i) // 1 2 3 4
 }
 
 // 去重数组的重复对象
 let arr = [1, 2, 3, 2, 1, 1]
-[... new Set(arr)]	// [1, 2, 3]
+[... new Set(arr)] // [1, 2, 3]
 ```
 
 Set 对象允许你储存任何类型的唯一值，无论是原始值或者是对象引用
@@ -107,16 +107,16 @@ console.log(set.entries()); // SetIterator {1, 2, 3}
 
 for (let item of set.keys()) {
   console.log(item);
-} // 1	2	 3
+} // 1 2  3
 // entries()：返回一个包含Set对象中所有元素得键值对迭代器
 for (let item of set.entries()) {
   console.log(item);
-} // [1, 1]	[2, 2]	[3, 3]
+} // [1, 1] [2, 2] [3, 3]
 
 // forEach(callbackFn, thisArg)：用于对集合成员执行callbackFn操作，如果提供了 thisArg 参数，回调中的this会是这个参数，没有返回值
 set.forEach((value, key) => {
   console.log(key + " : " + value);
-}); // 1 : 1	2 : 2	3 : 3
+}); // 1 : 1 2 : 2 3 : 3
 console.log([...set]); // [1, 2, 3]
 ```
 

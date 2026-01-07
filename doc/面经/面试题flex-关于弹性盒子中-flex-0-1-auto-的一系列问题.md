@@ -10,10 +10,10 @@
 
 ### 第二问 求最终 left、right 的宽度
 
-```
+```html
 <div class="container">
-    <div class="left"></div>
-    <div class="right"></div>
+  <div class="left"></div>
+  <div class="right"></div>
 </div>
 
 <style>
@@ -53,12 +53,12 @@ left 和 right 的主轴空间和大于父元素的宽度 超了 300px
 
 总权重为
 
-> 2 _ 500 + 1 _ 400 = 1400
+> 2 _500 + 1_ 400 = 1400
 
 超出了 所以是收缩 则分别的收缩长度
 
-> left：300 _ 2 _ 500 / 1400 = 214.28
-> right: 300 _ 1 _ 400 / 1400 = 85.72
+> left：300 _2_ 500 / 1400 = 214.28
+> right: 300 _1_ 400 / 1400 = 85.72
 
 最终宽度
 
@@ -67,10 +67,10 @@ left 和 right 的主轴空间和大于父元素的宽度 超了 300px
 
 ### 第三问 求最终 left、right 的宽度（变形）
 
-```
+```html
 <div class="container">
-    <div class="left"></div>
-    <div class="right"></div>
+  <div class="left"></div>
+  <div class="right"></div>
 </div>
 
 <style>
@@ -112,10 +112,8 @@ left 和 right 的主轴空间和大于父元素的宽度 超了 300px
 
 所以最后宽度
 
-> leftWidth：300 + 1 _ 33.33 = 333.33
-> rightWidth：200 + 2 _ 33.33 = 266.67
+> leftWidth：300 + 1 _33.33 = 333.33
+> rightWidth：200 + 2_ 33.33 = 266.67
 
 > 原文链接：
-> [弹性盒子中 flex: 0 1 auto 表示什么意思](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/380)
-> [求最终 left、right 的宽度](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/381)
-> [求最终 left、right 的宽度（变形）](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/382)
+> [弹性盒子中 flex: 0 1 auto 表示什么意思](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/380) > [求最终 left、right 的宽度](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/381) > [求最终 left、right 的宽度（变形）](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/382)

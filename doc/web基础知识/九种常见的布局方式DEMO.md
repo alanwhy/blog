@@ -6,7 +6,7 @@
  * @Description: 
  * @FilePath: /blog/web基础知识/九种常见的布局方式DEMO.md
 -->
-> 代码下载：[百度云链接 提取码：227g ](https://pan.baidu.com/s/1wRnwDJqPvD1xn24D0mXKTw)
+> 代码下载：[百度云链接 提取码：227g](https://pan.baidu.com/s/1wRnwDJqPvD1xn24D0mXKTw)
 
 目录：
 

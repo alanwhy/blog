@@ -6,9 +6,13 @@
   "license": "UNLICENSED",
   "scripts": {
     "gen:tree": "node scripts/generate-tree.js",
-    "prepare": "husky"
+    "prepare": "husky",
+    "fix:md": "node scripts/fix-markdown-code-blocks.js",
+    "lint:md": "markdownlint --fix \"doc/**/*.md\""
   },
   "devDependencies": {
-    "husky": "^9.0.0"
+    "husky": "^9.0.0",
+    "highlight.js": "^11.9.0",
+    "markdownlint-cli": "^0.41.0"
   }
 }

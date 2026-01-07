@@ -4,8 +4,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-a4dd8c92b548aad2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#oval {
+```css
+# oval {
   width: 200px;
   height: 100px;
   background: red;
@@ -17,8 +17,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-f5c4a7052be475a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#triangle-up {
+```css
+# triangle-up {
   width: 0;
   height: 0;
   border-left: 50px solid transparent;
@@ -31,8 +31,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-f8cf419989165ffe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#triangle-down {
+```css
+# triangle-down {
   width: 0;
   height: 0;
   border-left: 50px solid transparent;
@@ -45,8 +45,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-549211df54efcbde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#triangle-left {
+```css
+# triangle-left {
   width: 0;
   height: 0;
   border-top: 50px solid transparent;
@@ -59,8 +59,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-0fb9e70488b8cbba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#triangle-right {
+```css
+# triangle-right {
   width: 0;
   height: 0;
   border-top: 50px solid transparent;
@@ -73,8 +73,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-7de4e92d0031434a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#triangle-topleft {
+```css
+# triangle-topleft {
   width: 0;
   height: 0;
   border-top: 100px solid red;
@@ -86,8 +86,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-3cc021e9ba166ce2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#triangle-topright {
+```css
+# triangle-topright {
   width: 0;
   height: 0;
   border-top: 100px solid red;
@@ -99,8 +99,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-7f2b7c636141601e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#triangle-bottomleft {
+```css
+# triangle-bottomleft {
   width: 0;
   height: 0;
   border-bottom: 100px solid red;
@@ -112,8 +112,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-1bc3335286660e87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#triangle-bottomright {
+```css
+# triangle-bottomright {
   width: 0;
   height: 0;
   border-bottom: 100px solid red;
@@ -125,8 +125,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-c6a3f6740d74cbc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#curvedarrow {
+```css
+# curvedarrow {
   position: relative;
   width: 0;
   height: 0;
@@ -134,7 +134,7 @@
   border-right: 9px solid red;
   transform: rotate(10deg);
 }
-#curvedarrow:after {
+# curvedarrow:after {
   content: "";
   position: absolute;
   border: 0 solid transparent;
@@ -152,8 +152,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-aa1f50885bf31af0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#trapezoid {
+```css
+# trapezoid {
   border-bottom: 100px solid red;
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
@@ -166,8 +166,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-9ab4225459cff122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#parallelogram {
+```css
+# parallelogram {
   width: 150px;
   height: 100px;
   transform: skew(20deg);
@@ -179,8 +179,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-45bfdaf75c12f16c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#star-five {
+```css
+# star-five {
   margin: 50px 0;
   position: relative;
   display: block;
@@ -192,7 +192,7 @@
   border-left: 100px solid transparent;
   transform: rotate(35deg);
 }
-#star-five:before {
+# star-five:before {
   border-bottom: 80px solid red;
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
@@ -202,10 +202,10 @@
   top: -45px;
   left: -65px;
   display: block;
-  content: '';
+  content: "";
   transform: rotate(-35deg);
 }
-#star-five:after {
+# star-five:after {
   position: absolute;
   display: block;
   color: red;
@@ -217,7 +217,7 @@
   border-bottom: 70px solid red;
   border-left: 100px solid transparent;
   transform: rotate(-70deg);
-  content: '';
+  content: "";
 }
 ```
 
@@ -225,14 +225,14 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-69262195ebc4c122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#heart {
+```css
+# heart {
   position: relative;
   width: 100px;
   height: 90px;
 }
-#heart:before,
-#heart:after {
+# heart:before,
+# heart:after {
   position: absolute;
   content: "";
   left: 50px;
@@ -244,7 +244,7 @@
   transform: rotate(-45deg);
   transform-origin: 0 100%;
 }
-#heart:after {
+# heart:after {
   left: 0;
   transform: rotate(45deg);
   transform-origin: 100% 100%;
@@ -255,8 +255,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-b73bd1a1443209db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#diamond {
+```css
+# diamond {
   width: 0;
   height: 0;
   border: 50px solid transparent;
@@ -264,8 +264,8 @@
   position: relative;
   top: -50px;
 }
-#diamond:after {
-  content: '';
+# diamond:after {
+  content: "";
   position: absolute;
   left: -50px;
   top: 50px;
@@ -280,8 +280,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-844907cf99f15c34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#talkbubble {
+```css
+# talkbubble {
   width: 120px;
   height: 80px;
   background: red;
@@ -290,7 +290,7 @@
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
-#talkbubble:before {
+# talkbubble:before {
   content: "";
   position: absolute;
   right: 100%;
@@ -307,8 +307,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-b6493d08add7a19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#yin-yang {
+```css
+# yin-yang {
   width: 96px;
   box-sizing: content-box;
   height: 48px;
@@ -319,7 +319,7 @@
   border-radius: 100%;
   position: relative;
 }
-#yin-yang:before {
+# yin-yang:before {
   content: "";
   position: absolute;
   top: 50%;
@@ -331,7 +331,7 @@
   height: 12px;
   box-sizing: content-box;
 }
-#yin-yang:after {
+# yin-yang:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -349,8 +349,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-d733d786958a0316.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#space-invader {
+```tap
+# space-invader {
   box-shadow: 0 0 0 1em red,
   0 1em 0 1em red,
   -2.5em 1.5em 0 .5em red,
@@ -393,8 +393,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-29b25dd52475bbb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#magnifying-glass {
+```css
+# magnifying-glass {
   font-size: 10em;
   display: inline-block;
   width: 0.4em;
@@ -404,7 +404,7 @@
   position: relative;
   border-radius: 0.35em;
 }
-#magnifying-glass:before {
+# magnifying-glass:before {
   content: "";
   display: inline-block;
   position: absolute;
@@ -422,8 +422,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-7a96a80537e45b4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#moon {
+```css
+# moon {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -435,8 +435,8 @@
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-1f14dfe7721b1a2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-```
-#lock {
+```css
+# lock {
   font-size: 8px;
   position: relative;
   width: 18em;
@@ -449,7 +449,7 @@
   border-left-width: 7.5em;
   margin: 0 0 6rem 0;
 }
-#lock:before {
+# lock:before {
   content: "";
   box-sizing: border-box;
   position: absolute;
@@ -462,7 +462,7 @@
   border-top-left-radius: 7em;
   border-top-right-radius: 7em;
 }
-#lock:after {
+# lock:after {
   content: "";
   box-sizing: border-box;
   position: absolute;

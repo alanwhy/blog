@@ -81,7 +81,7 @@ module.exports = defineConfig({
         }),
       ]
     );
-    /* config.optimization = {
+    /*config.optimization = {
       splitChunks: {
         // 分割代码块
         cacheGroups: {
@@ -120,7 +120,7 @@ module.exports = defineConfig({
     }; */
   },
   css: {
-    /* 配置 scss 全局变量 */
+    /* 配置 scss 全局变量*/
     loaderOptions: {
       scss: {
         additionalData: `@import '~@/scss/var.scss';@import '~@/scss/service.var.scss';`,
@@ -149,14 +149,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 // dll文件存放的目录
 const dllPath = "dll";
-const vendorModules = [
-  "vue",
-  "vue-router",
-  "vuex",
-  "echarts",
-  "element-ui",
-  "lodash",
-];
+const vendorModules = ["vue", "vue-router", "vuex", "echarts", "element-ui", "lodash"];
 
 module.exports = {
   entry: {

@@ -1,6 +1,6 @@
 # git-commit 的一些工具库
 
-> 建议阅读：[git commit 规范参考 ](https://www.jianshu.com/p/cac0fe9c34c4)
+> 建议阅读：[git commit 规范参考](https://www.jianshu.com/p/cac0fe9c34c4)
 
 > 原文链接： [你可能已经忽略的 git commit 规范](https://segmentfault.com/a/1190000021634111)
 
@@ -95,7 +95,7 @@ git commit -m ':bug: 问题fix'
 
 ![image.png](https://upload-images.jianshu.io/upload_images/12877063-ca7112fea660a548.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#### 最后附上一个之前项目针对 git commit 配置的 package.json，作为参考:
+#### 最后附上一个之前项目针对 git commit 配置的 package.json，作为参考
 
 ```json
 {

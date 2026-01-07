@@ -12,13 +12,13 @@
 
 ### 安装 tree-node-cli
 
-```
+```shell
 npm install -g tree-node-cli
 ```
 
 ### 卸载
 
-```
+```shell
 npm uninstall -g tree-node-cli
 ```
 
@@ -26,13 +26,13 @@ npm uninstall -g tree-node-cli
 
 执行如下命令即可在终端中生成，复制保存下来即可
 
-```
+```shell
 treee -L 3 -I "node_modules|.idea|objects|.git" -a --dirs-first
 ```
 
 例如：
 
-```
+```shell
 refined_road
 ├── public
 │   ├── config
@@ -86,7 +86,7 @@ refined_road
 
 ### 完整选项
 
-```
+```shell
 -V, --version             输出版本号
 -a, --all-files           打印所有文件，包括隐藏文件
 --dirs-first              目录在前，文件在后

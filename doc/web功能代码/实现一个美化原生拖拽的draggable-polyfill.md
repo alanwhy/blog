@@ -2,21 +2,21 @@
 
 在 HTML5 还未普及之前，实现元素的拖拽还算是一件比较麻烦的事，大概思路就是监听鼠标移动相关事件，下面是伪代码
 
-```
-oDiv.onmousedown = function(ev){
-    //记录起始位置
-}
-document.onmousemove = function(ev){
-    //移动目标元素
-}
-document.onmouseup = function(ev){
-    //取消鼠标移动事件
-}
+```js
+oDiv.onmousedown = function (ev) {
+  //记录起始位置
+};
+document.onmousemove = function (ev) {
+  //移动目标元素
+};
+document.onmouseup = function (ev) {
+  //取消鼠标移动事件
+};
 ```
 
 HTML5 新增了拖放 draggable 标准，拖拽就变得简单了，只需要通过监听元素的拖放事件就能实现各种拖放功能。
 
-```
+```html
 <div draggable="true">drag me</div>
 ```
 
@@ -24,11 +24,11 @@ HTML5 新增了拖放 draggable 标准，拖拽就变得简单了，只需要通
 
 当然，设置`draggable="true"`元素仅仅是“可拖拽”，松手后就还原，如果需要拖拽到指定位置仅需要在 drop 记录一下就行了
 
-```
-dropbox.addEventListener('drop',function(ev){
-    dragbox.style.left = XX;
-    dragbox.style.top = XX;
-})
+```js
+dropbox.addEventListener("drop", function (ev) {
+  dragbox.style.left = XX;
+  dragbox.style.top = XX;
+});
 ```
 
 ### 自定义原生的拖拽
@@ -44,7 +44,7 @@ dropbox.addEventListener('drop',function(ev){
 
 虽然`setDragImage`比较鸡肋，但是我们可以设置一张透明的图片就可以实现去除默认的预览图的效果了
 
-```
+```js
 dragbox.addEventListener('dragstart', function (ev) {
     var img = new Image();
     img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' %3E%3Cpath /%3E%3C/svg%3E";
@@ -58,9 +58,14 @@ dragbox.addEventListener('dragstart', function (ev) {
 
 复制一份当前目标元素，并且设置`position:fixed`等属性，可以悬浮在页面之上，然后添加到 body，如下
 
-```
+```js
 var cloneObj = this.cloneNode(true);
-cloneObj.style = 'position:fixed;left:0;top:0;z-index:999;pointer-events:none;transform:translate3d( ' + left + 'px ,' + top + 'px,0);'
+cloneObj.style =
+  "position:fixed;left:0;top:0;z-index:999;pointer-events:none;transform:translate3d( " +
+  left +
+  "px ," +
+  top +
+  "px,0);";
 document.body.appendChild(cloneObj);
 ```
 
@@ -68,35 +73,35 @@ document.body.appendChild(cloneObj);
 
 拖拽元素时会触发`drag`事件，和鼠标移动事件类似，可以取到当前鼠标位置（在拖拽过程中并不触发`mousemove`事件），同时也能隐藏原目标
 
-```
-dragbox.addEventListener('drag', function (ev) {
-    if(cloneObj){
-        cloneObj.style.transform = 'translate3d( ' + left + 'px ,' + top + 'px,0)';
-        dragbox.style.visibility = 'visible';
-    }
-})
+```js
+dragbox.addEventListener("drag", function (ev) {
+  if (cloneObj) {
+    cloneObj.style.transform = "translate3d( " + left + "px ," + top + "px,0)";
+    dragbox.style.visibility = "visible";
+  }
+});
 ```
 
 Chrome 确实是这样，FireFox 虽然也能触发`drag`事件，然后里面却取不到鼠标位置信息（均为 0），所以，我们只能把监听放在`dragover`上，虽然不太完美，也是一个方法
 
-```
-document.addEventListener('dragover', function (ev) {
-    if(cloneObj){
-        cloneObj.style.transform = 'translate3d( ' + left + 'px ,' + top + 'px,0)';
-    }
-})
+```js
+document.addEventListener("dragover", function (ev) {
+  if (cloneObj) {
+    cloneObj.style.transform = "translate3d( " + left + "px ," + top + "px,0)";
+  }
+});
 ```
 
 ##### 4.拖拽结束移除 cloneObj
 
 拖拽结束移除 cloneObj，并且还原原目标
 
-```
-oDiv.addEventListener('dragend', function (ev) {
-    document.body.removeChild(cloneObj);
-    cloneObj = null;
-    dragbox.style.visibility = 'visible';
-})
+```javascript
+oDiv.addEventListener("dragend", function (ev) {
+  document.body.removeChild(cloneObj);
+  cloneObj = null;
+  dragbox.style.visibility = "visible";
+});
 ```
 
 ### 效果图
@@ -107,13 +112,13 @@ oDiv.addEventListener('dragend', function (ev) {
 
 1.直接引用
 
-```
+```html
 <script src="./lib/draggable-polyfill.js"></script>
 ```
 
 2.工程项目
 
-```
+```shell
 npm i draggable-polyfill
 
 import draggable-polyfill;
@@ -121,13 +126,13 @@ import draggable-polyfill;
 
 需要注意的一点是：由于只是复制了当前节点，所以如果你的样式依赖于父级，那么复制出来的样式就会和原目标不一样
 
-```
-.parent .dragbox{
-    background:red
+```css
+.parent .dragbox {
+  background: red;
 }
 /*改为*/
-.dragbox{
-    background:red
+.dragbox {
+  background: red;
 }
 ```
 

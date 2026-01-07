@@ -1,14 +1,15 @@
-#一、问题描述
+# 一、问题描述
+
 将一个数组（或请求返回的 json 结果为数组），如
 
-```
+```js
 a  = [0，1，2，3，4]
 ```
 
 赋值给另一个空的数组
 
-```
-b = []
+```js
+b = [];
 ```
 
 会出现如果修改 a 或 b 中的数据，a 和 b 都会发生改变，那么该怎么解决呢？ #二、错误原因
@@ -19,26 +20,29 @@ b = []
 - 引用类型：引用类型指的是对象。可以拥有属性和方法，并且我们可以修改其属性和方法。引用对象存放的方式是：在栈中存放对象变量标示名称和该对象在堆中的存放地址，在堆中存放数据。
 
 对象使用的是引用赋值。当我们把一个对象赋值给一个新的变量时，赋的其实是该对象的在堆中的地址，而不是堆中的数据。也就是两个对象指向的是同一个存储空间，无论哪个对象发生改变，其实都是改变的存储空间的内容，因此，两个对象是联动的。 #三、解决办法
-###3.1、push()
 
-```
-for(let i = 0; i< a.length ; i++){
-  b.push(a[i])
+### 3.1、push()
+
+```js
+for (let i = 0; i < a.length; i++) {
+  b.push(a[i]);
 }
 ```
 
 貌似并不是很好用
-###3.2、concat()
 
-```
-let b = [].concat(a)
+### 3.2、concat()
+
+```js
+let b = [].concat(a);
 ```
 
 貌似也不是很好用
-###3.3、JSON.parse & JSON.stringify
 
-```
-let b = JSON.parse(JSON.stringify(a))
+### 3.3、JSON.parse & JSON.stringify
+
+```javascript
+let b = JSON.parse(JSON.stringify(a));
 ```
 
 好用！就是他了！
@@ -61,7 +65,7 @@ let b = JSON.parse(JSON.stringify(a))
 - 如果对象中存在循环引用的情况也无法正确实现深拷贝；
   可以通过封装方法来解决以上的坑，代码如下：
 
-```
+```js
 function  deepClone(data) {
       const type = this.judgeType(data);
       let obj;
@@ -117,12 +121,12 @@ function  judgeType(obj) {
 使用第三方的库进行深拷贝：[lodash](https://www.lodashjs.com/)
 该函数库也有提供`_.cloneDeep`用来做 Deep Copy
 
-```
-var _ = require('lodash');
+```js
+var _ = require("lodash");
 var obj1 = {
-    a: 1,
-    b: { f: { g: 1 } },
-    c: [1, 2, 3]
+  a: 1,
+  b: { f: { g: 1 } },
+  c: [1, 2, 3],
 };
 var obj2 = _.cloneDeep(obj1);
 console.log(obj1.b.f === obj2.b.f);

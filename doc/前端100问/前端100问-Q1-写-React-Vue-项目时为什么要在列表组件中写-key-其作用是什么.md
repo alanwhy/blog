@@ -8,55 +8,47 @@
 
 ### 正文回答
 
-#### 基于没有 key 的情况 diff 速度会更快。
+#### 基于没有 key 的情况 diff 速度会更快
 
 没有绑定 key 的情况下，并且在遍历模板简单的情况下，会导致虚拟新旧节点对比更快，节点也会复用。
 而这种复用是`就地复用`，一种`鸭子辩型`的复用。
 
-```
- vm.dataList = [4, 1, 3, 5, 2] // 数据位置替换
-
- // 没有key的情况， 节点位置不变，但是节点innerText内容更新了
-  [
-    '<div>4</div>', // id： A
-    '<div>1</div>', // id:  B
-    '<div>3</div>', // id:  C
-    '<div>5</div>', // id:  D
-    '<div>2</div>'  // id:  E
-  ]
-
+```js
+vm.dataList = [4, 1, 3, 5, 2][ // 数据位置替换
+  // 没有key的情况， 节点位置不变，但是节点innerText内容更新了
+  ("<div>4</div>", // id： A
+  "<div>1</div>", // id:  B
+  "<div>3</div>", // id:  C
+  "<div>5</div>", // id:  D
+  "<div>2</div>") // id:  E
+][
   // 有key的情况，dom节点位置进行了交换，但是内容没有更新
   // <div v-for="i in dataList" :key='i'>{{ i }}</div>
-  [
-    '<div>4</div>', // id： D
-    '<div>1</div>', // id:  A
-    '<div>3</div>', // id:  C
-    '<div>5</div>', // id:  E
-    '<div>2</div>'  // id:  B
-  ]
+  ("<div>4</div>", // id： D
+  "<div>1</div>", // id:  A
+  "<div>3</div>", // id:  C
+  "<div>5</div>", // id:  E
+  "<div>2</div>") // id:  B
+];
 ```
 
-```
-  vm.dataList = [3, 4, 5, 6, 7] // 数据进行增删
-
+```js
+vm.dataList = [3, 4, 5, 6, 7][ // 数据进行增删
   // 1. 没有key的情况， 节点位置不变，内容也更新了
-  [
-    '<div>3</div>', // id： A
-    '<div>4</div>', // id:  B
-    '<div>5</div>', // id:  C
-    '<div>6</div>', // id:  D
-    '<div>7</div>'  // id:  E
-  ]
-
+  ("<div>3</div>", // id： A
+  "<div>4</div>", // id:  B
+  "<div>5</div>", // id:  C
+  "<div>6</div>", // id:  D
+  "<div>7</div>") // id:  E
+][
   // 2. 有key的情况， 节点删除了 A, B 节点，新增了 F, G 节点
   // <div v-for="i in dataList" :key='i'>{{ i }}</div>
-  [
-    '<div>3</div>', // id： C
-    '<div>4</div>', // id:  D
-    '<div>5</div>', // id:  E
-    '<div>6</div>', // id:  F
-    '<div>7</div>'  // id:  G
-  ]
+  ("<div>3</div>", // id： C
+  "<div>4</div>", // id:  D
+  "<div>5</div>", // id:  E
+  "<div>6</div>", // id:  F
+  "<div>7</div>") // id:  G
+];
 ```
 
 从以上来看，不带有 key，并且使用简单的模板，基于这个前提下，可以更有效的复用节点，diff 速度来看也是不带 key 更加快速的，因为带 key 在增删节点上有耗时。

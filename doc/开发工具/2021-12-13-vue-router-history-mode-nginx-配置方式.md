@@ -23,8 +23,8 @@
 
 想要最终的访问方式：
 
-- www.yourDomain.com/projectA
-- www.yourDomain.com/projectB
+- <www.yourDomain.com/projectA>
+- <www.yourDomain.com/projectB>
 
 默认 vue-router 会配置如下：
 
@@ -110,4 +110,4 @@ location @rewrites {
 }
 ```
 
-> 原文链接：https://www.jianshu.com/p/2ddb5983c04f
+> 原文链接：<https://www.jianshu.com/p/2ddb5983c04f>

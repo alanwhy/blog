@@ -1,36 +1,40 @@
-###变量
-#####1、变量命名
+### 变量
+
+##### 1、变量命名
+
 一般我们在定义变量是要使用有意义的词汇命令，要做到见面知义
 
-```
+```js
 //bad code
-const yyyymmdstr = moment().format('YYYY/MM/DD');
+const yyyymmdstr = moment().format("YYYY/MM/DD");
 //better code
-const currentDate = moment().format('YYYY/MM/DD');
+const currentDate = moment().format("YYYY/MM/DD");
 ```
 
-#####2、可描述
+##### 2、可描述
+
 通过一个变量生成了一个新变量，也需要为这个新变量命名，也就是说每个变量当你看到他第一眼你就知道他是干什么的。
 
-```
+```js
 //bad code
-const ADDRESS = 'One Infinite Loop, Cupertino 95014';
+const ADDRESS = "One Infinite Loop, Cupertino 95014";
 const CITY_ZIP_CODE_REGEX = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 saveCityZipCode(ADDRESS.match(CITY_ZIP_CODE_REGEX)[1], ADDRESS.match(CITY_ZIP_CODE_REGEX)[2]);
 
 //better code
-const ADDRESS = 'One Infinite Loop, Cupertino 95014';
+const ADDRESS = "One Infinite Loop, Cupertino 95014";
 const CITY_ZIP_CODE_REGEX = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 const [, city, zipCode] = ADDRESS.match(CITY_ZIP_CODE_REGEX) || [];
 saveCityZipCode(city, zipCode);
 ```
 
-#####3、形参命名
+##### 3、形参命名
+
 在 for、forEach、map 的循环中我们在命名时要直接
 
-```
+```javascript
 //bad code
-const locations = ['Austin', 'New York', 'San Francisco'];
+const locations = ["Austin", "New York", "San Francisco"];
 locations.map((l) => {
   doStuff();
   doSomeOtherStuff();
@@ -42,7 +46,7 @@ locations.map((l) => {
 });
 
 //better code
-const locations = ['Austin', 'New York', 'San Francisco'];
+const locations = ["Austin", "New York", "San Francisco"];
 locations.forEach((location) => {
   doStuff();
   doSomeOtherStuff();
@@ -53,53 +57,56 @@ locations.forEach((location) => {
 });
 ```
 
-#####4、避免无意义的前缀
+##### 4、避免无意义的前缀
+
 例如我们只创建一个对象是，没有必要再把每个对象的属性上再加上对象名
 
-```
+```js
 //bad code
 const car = {
-  carMake: 'Honda',
-  carModel: 'Accord',
-  carColor: 'Blue'
+  carMake: "Honda",
+  carModel: "Accord",
+  carColor: "Blue",
 };
 
 function paintCar(car) {
-  car.carColor = 'Red';
+  car.carColor = "Red";
 }
 
 //better code
 const car = {
-  make: 'Honda',
-  model: 'Accord',
-  color: 'Blue'
+  make: "Honda",
+  model: "Accord",
+  color: "Blue",
 };
 
 function paintCar(car) {
-  car.color = 'Red';
+  car.color = "Red";
 }
 ```
 
-#####5、默认值
+##### 5、默认值
 
-```
+```js
 //bad code
 function createMicrobrewery(name) {
-  const breweryName = name || 'Hipster Brew Co.';
+  const breweryName = name || "Hipster Brew Co.";
   // ...
 }
 
 //better code
-function createMicrobrewery(name = 'Hipster Brew Co.') {
+function createMicrobrewery(name = "Hipster Brew Co.") {
   // ...
 }
 ```
 
-###函数
-#####1、参数
+### 函数
+
+##### 1、参数
+
 一般参数多的话要使用 ES6 的解构传参的方式
 
-```
+```js
 //bad code
 function createMenu(title, body, buttonText, cancellable) {
   // ...
@@ -112,17 +119,18 @@ function createMenu({ title, body, buttonText, cancellable }) {
 
 //better code
 createMenu({
-  title: 'Foo',
-  body: 'Bar',
-  buttonText: 'Baz',
-  cancellable: true
+  title: "Foo",
+  body: "Bar",
+  buttonText: "Baz",
+  cancellable: true,
 });
 ```
 
-#####2、单一化处理
+##### 2、单一化处理
+
 一个方法里面最好只做一件事，不要过多的处理，这样代码的可读性非常高
 
-```
+```javascript
 //bad code
 function emailClients(clients) {
   clients.forEach((client) => {
@@ -135,9 +143,7 @@ function emailClients(clients) {
 
 //better code
 function emailActiveClients(clients) {
-  clients
-    .filter(isActiveClient)
-    .forEach(email);
+  clients.filter(isActiveClient).forEach(email);
 }
 function isActiveClient(client) {
   const clientRecord = database.lookup(client);
@@ -145,40 +151,42 @@ function isActiveClient(client) {
 }
 ```
 
-#####3、对象设置默认属性
+##### 3、对象设置默认属性
 
-```
+```js
 //bad code
 const menuConfig = {
   title: null,
-  body: 'Bar',
+  body: "Bar",
   buttonText: null,
-  cancellable: true
+  cancellable: true,
 };
 function createMenu(config) {
-  config.title = config.title || 'Foo';
-  config.body = config.body || 'Bar';
-  config.buttonText = config.buttonText || 'Baz';
+  config.title = config.title || "Foo";
+  config.body = config.body || "Bar";
+  config.buttonText = config.buttonText || "Baz";
   config.cancellable = config.cancellable !== undefined ? config.cancellable : true;
 }
 createMenu(menuConfig);
 
-
 //better code
 const menuConfig = {
-  title: 'Order',
+  title: "Order",
   // 'body' key 缺失
-  buttonText: 'Send',
-  cancellable: true
+  buttonText: "Send",
+  cancellable: true,
 };
 
 function createMenu(config) {
-  config = Object.assign({
-    title: 'Foo',
-    body: 'Bar',
-    buttonText: 'Baz',
-    cancellable: true
-  }, config);
+  config = Object.assign(
+    {
+      title: "Foo",
+      body: "Bar",
+      buttonText: "Baz",
+      cancellable: true,
+    },
+    config
+  );
 
   // config 就变成了: {title: "Order", body: "Bar", buttonText: "Send", cancellable: true}
   // ...
@@ -187,29 +195,29 @@ function createMenu(config) {
 createMenu(menuConfig);
 ```
 
-#####4、避免副作用
+##### 4、避免副作用
+
 函数接收一个值返回一个新值，除此之外的行为我们都称之为副作用，比如修改全局变量、对文件进行 IO 操作等。
 当函数确实需要副作用时，比如对文件进行 IO 操作时，请不要用多个函数/类进行文件操作，有且仅用一个函数/类来处理。也就是说副作用需要在唯一的地方处理。
 副作用的三大天坑：随意修改可变数据类型、随意分享没有数据结构的状态、没有在统一地方处理副作用。
 
-```
+```js
 //bad code
 // 全局变量被一个函数引用
 // 现在这个变量从字符串变成了数组，如果有其他的函数引用，会发生无法预见的错误。
-var name = 'Ryan McDermott';
+var name = "Ryan McDermott";
 function splitIntoFirstAndLastName() {
-  name = name.split(' ');
+  name = name.split(" ");
 }
 splitIntoFirstAndLastName();
 console.log(name); // ['Ryan', 'McDermott'];
 
-
 //better code
-var name = 'Ryan McDermott';
-var newName = splitIntoFirstAndLastName(name)
+var name = "Ryan McDermott";
+var newName = splitIntoFirstAndLastName(name);
 
 function splitIntoFirstAndLastName(name) {
-  return name.split(' ');
+  return name.split(" ");
 }
 
 console.log(name); // 'Ryan McDermott';
@@ -226,7 +234,7 @@ console.log(newName); // ['Ryan', 'McDermott'];
 
 为了避免这种问题，我们需要在每次新增商品时，克隆 购物车数组并返回新的数组。
 
-```
+```js
 //bad code
 const addItemToCart = (cart, item) => {
   cart.push({ item, date: Date.now() });
@@ -234,59 +242,63 @@ const addItemToCart = (cart, item) => {
 
 //better code
 const addItemToCart = (cart, item) => {
-  return [...cart, {item, date: Date.now()}]
+  return [...cart, { item, date: Date.now() }];
 };
 ```
 
-#####5、全局方法
+##### 5、全局方法
+
 在 JavaScript 中，永远不要污染全局，会在生产环境中产生难以预料的 bug。举个例子，比如你在 `Array.prototype`上新增一个 `diff`方法来判断两个数组的不同。而你同事也打算做类似的事情，不过他的 `diff`方法是用来判断两个数组首位元素的不同。很明显你们方法会产生冲突，遇到这类问题我们可以用 ES2015/ES6 的语法来对 `Array`进行扩展。
 
-```
+```js
 //bad code
 Array.prototype.diff = function diff(comparisonArray) {
   const hash = new Set(comparisonArray);
-  return this.filter(elem => !hash.has(elem));
+  return this.filter((elem) => !hash.has(elem));
 };
 
 //better code
 class SuperArray extends Array {
   diff(comparisonArray) {
     const hash = new Set(comparisonArray);
-    return this.filter(elem => !hash.has(elem));
+    return this.filter((elem) => !hash.has(elem));
   }
 }
 ```
 
-#####6、避免类型检查
+##### 6、避免类型检查
+
 JavaScript 是无类型的，意味着你可以传任意类型参数，这种自由度很容易让人困扰，不自觉的就会去检查类型。仔细想想是你真的需要检查类型还是你的 API 设计有问题？
 
-```
+```js
 //bad code
 function travelToTexas(vehicle) {
   if (vehicle instanceof Bicycle) {
-    vehicle.pedal(this.currentLocation, new Location('texas'));
+    vehicle.pedal(this.currentLocation, new Location("texas"));
   } else if (vehicle instanceof Car) {
-    vehicle.drive(this.currentLocation, new Location('texas'));
+    vehicle.drive(this.currentLocation, new Location("texas"));
   }
 }
 
 //better code
 function travelToTexas(vehicle) {
-  vehicle.move(this.currentLocation, new Location('texas'));
+  vehicle.move(this.currentLocation, new Location("texas"));
 }
 ```
 
 如果你需要做静态类型检查，比如字符串、整数等，推荐使用 TypeScript，不然你的代码会变得又臭又长。
 
-```
+```javascript
 //bad code
 function combine(val1, val2) {
-  if (typeof val1 === 'number' && typeof val2 === 'number' ||
-      typeof val1 === 'string' && typeof val2 === 'string') {
+  if (
+    (typeof val1 === "number" && typeof val2 === "number") ||
+    (typeof val1 === "string" && typeof val2 === "string")
+  ) {
     return val1 + val2;
   }
 
-  throw new Error('Must be of type String or Number');
+  throw new Error("Must be of type String or Number");
 }
 
 //better code
@@ -295,118 +307,122 @@ function combine(val1, val2) {
 }
 ```
 
-###复杂条件判断
-#####1、if/else
+### 复杂条件判断
 
-```
+##### 1、if/else
+
+```js
 /**
  * 按钮点击事件
  * @param {number} status 活动状态：1 开团进行中 2 开团失败 3 商品售罄 4 开团成功 5 系统取消
  */
-const onButtonClick = (status)=>{
-  if(status == 1){
-    sendLog('processing')
-    jumpTo('IndexPage')
-  }else if(status == 2){
-    sendLog('fail')
-    jumpTo('FailPage')
-  }else if(status == 3){
-    sendLog('fail')
-    jumpTo('FailPage')
-  }else if(status == 4){
-    sendLog('success')
-    jumpTo('SuccessPage')
-  }else if(status == 5){
-    sendLog('cancel')
-    jumpTo('CancelPage')
-  }else {
-    sendLog('other')
-    jumpTo('Index')
+const onButtonClick = (status) => {
+  if (status == 1) {
+    sendLog("processing");
+    jumpTo("IndexPage");
+  } else if (status == 2) {
+    sendLog("fail");
+    jumpTo("FailPage");
+  } else if (status == 3) {
+    sendLog("fail");
+    jumpTo("FailPage");
+  } else if (status == 4) {
+    sendLog("success");
+    jumpTo("SuccessPage");
+  } else if (status == 5) {
+    sendLog("cancel");
+    jumpTo("CancelPage");
+  } else {
+    sendLog("other");
+    jumpTo("Index");
   }
-}
+};
 ```
 
 从上面我们可以看到的是通过不同的状态来做不同的事情，代码看起来非常不好看，大家可以很轻易的提出这段代码的改写方案，switch 出场
-#####2、switch/case
 
-```
+##### 2、switch/case
+
+```js
 /**
  * 按钮点击事件
  * @param {number} status 活动状态：1 开团进行中 2 开团失败 3 商品售罄 4 开团成功 5 系统取消
  */
-const onButtonClick = (status)=>{
-  switch (status){
+const onButtonClick = (status) => {
+  switch (status) {
     case 1:
-      sendLog('processing')
-      jumpTo('IndexPage')
-      break
+      sendLog("processing");
+      jumpTo("IndexPage");
+      break;
     case 2:
     case 3:
-      sendLog('fail')
-      jumpTo('FailPage')
-      break
+      sendLog("fail");
+      jumpTo("FailPage");
+      break;
     case 4:
-      sendLog('success')
-      jumpTo('SuccessPage')
-      break
+      sendLog("success");
+      jumpTo("SuccessPage");
+      break;
     case 5:
-      sendLog('cancel')
-      jumpTo('CancelPage')
-      break
+      sendLog("cancel");
+      jumpTo("CancelPage");
+      break;
     default:
-      sendLog('other')
-      jumpTo('Index')
-      break
+      sendLog("other");
+      jumpTo("Index");
+      break;
   }
-}
+};
 ```
 
 这样看起来比 if/else 清晰多了，细心的同学也发现了小技巧，case 2 和 case 3 逻辑一样的时候，可以省去执行语句和 break，则 case 2 的情况自动执行 case 3 的逻辑
-#####3、存放到 Object
+
+##### 3、存放到 Object
+
 将判断条件作为对象的属性名，将处理逻辑作为对象的属性值，在按钮点击的时候，通过对象属性查找的方式来进行逻辑判断，这种写法特别适合一元条件判断的情况。
 
-```
+```js
 const actions = {
-  '1': ['processing','IndexPage'],
-  '2': ['fail','FailPage'],
-  '3': ['fail','FailPage'],
-  '4': ['success','SuccessPage'],
-  '5': ['cancel','CancelPage'],
-  'default': ['other','Index'],
-}
+  1: ["processing", "IndexPage"],
+  2: ["fail", "FailPage"],
+  3: ["fail", "FailPage"],
+  4: ["success", "SuccessPage"],
+  5: ["cancel", "CancelPage"],
+  default: ["other", "Index"],
+};
 /**
  * 按钮点击事件
  * @param {number} status 活动状态：1开团进行中 2开团失败 3 商品售罄 4 开团成功 5 系统取消
  */
-const onButtonClick = (status)=>{
-  let action = actions[status] || actions['default'],
-      logName = action[0],
-      pageName = action[1]
-  sendLog(logName)
-  jumpTo(pageName)
-}
+const onButtonClick = (status) => {
+  let action = actions[status] || actions["default"],
+    logName = action[0],
+    pageName = action[1];
+  sendLog(logName);
+  jumpTo(pageName);
+};
 ```
 
-#####4、存放到 Map
+##### 4、存放到 Map
 
-```
+```js
 const actions = new Map([
-  [1, ['processing','IndexPage']],
-  [2, ['fail','FailPage']],
-  [3, ['fail','FailPage']],
-  [4, ['success','SuccessPage']],
-  [5, ['cancel','CancelPage']],
-  ['default', ['other','Index']]
-])
+  [1, ["processing", "IndexPage"]],
+  [2, ["fail", "FailPage"]],
+  [3, ["fail", "FailPage"]],
+  [4, ["success", "SuccessPage"]],
+  [5, ["cancel", "CancelPage"]],
+  ["default", ["other", "Index"]],
+]);
 /**
  * 按钮点击事件
  * @param {number} status 活动状态：1 开团进行中 2 开团失败 3 商品售罄 4 开团成功 5 系统取消
  */
-const onButtonClick = (status)=>{
-  let action = actions.get(status) || actions.get('default')
-  sendLog(action[0])
-  jumpTo(action[1])
-}
+const onButtonClick = (status) => {
+  let action = actions.get(status) || actions.get("default");
+  sendLog(action[0]);
+  jumpTo(action[1]);
+};
 ```
 
 这样写用到了 es6 里的 Map 对象，是不是更爽了？Map 对象和 Object 对象有什么区别呢？
@@ -415,13 +431,13 @@ const onButtonClick = (status)=>{
 - 一个对象的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值。
 - 你可以通过 size 属性很容易地得到一个 Map 的键值对个数，而对象的键值对个数只能手动确认。 ###代码风格 #####常量大写
 
-```
+```js
 //bad code
 const DAYS_IN_WEEK = 7;
 const daysInMonth = 30;
 
-const songs = ['Back In Black', 'Stairway to Heaven', 'Hey Jude'];
-const Artists = ['ACDC', 'Led Zeppelin', 'The Beatles'];
+const songs = ["Back In Black", "Stairway to Heaven", "Hey Jude"];
+const Artists = ["ACDC", "Led Zeppelin", "The Beatles"];
 
 function eraseDatabase() {}
 function restore_database() {}
@@ -433,8 +449,8 @@ class Alpaca {}
 const DAYS_IN_WEEK = 7;
 const DAYS_IN_MONTH = 30;
 
-const SONGS = ['Back In Black', 'Stairway to Heaven', 'Hey Jude'];
-const ARTISTS = ['ACDC', 'Led Zeppelin', 'The Beatles'];
+const SONGS = ["Back In Black", "Stairway to Heaven", "Hey Jude"];
+const ARTISTS = ["ACDC", "Led Zeppelin", "The Beatles"];
 
 function eraseDatabase() {}
 function restoreDatabase() {}
@@ -443,9 +459,9 @@ class Animal {}
 class Alpaca {}
 ```
 
-#####先声明后调用
+##### 先声明后调用
 
-```
+```js
 //bad code
 class PerformanceReview {
   constructor(employee) {
@@ -453,11 +469,11 @@ class PerformanceReview {
   }
 
   lookupPeers() {
-    return db.lookup(this.employee, 'peers');
+    return db.lookup(this.employee, "peers");
   }
 
   lookupManager() {
-    return db.lookup(this.employee, 'manager');
+    return db.lookup(this.employee, "manager");
   }
 
   getPeerReviews() {
@@ -501,7 +517,7 @@ class PerformanceReview {
   }
 
   lookupPeers() {
-    return db.lookup(this.employee, 'peers');
+    return db.lookup(this.employee, "peers");
   }
 
   getManagerReview() {
@@ -509,7 +525,7 @@ class PerformanceReview {
   }
 
   lookupManager() {
-    return db.lookup(this.employee, 'manager');
+    return db.lookup(this.employee, "manager");
   }
 
   getSelfReview() {
@@ -519,7 +535,6 @@ class PerformanceReview {
 
 const review = new PerformanceReview(employee);
 review.perfReview();
-
 ```
 
 > 原文链接：# [如何写出优雅耐看的 JavaScript 代码](https://segmentfault.com/a/1190000020444918)

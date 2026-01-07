@@ -18,7 +18,7 @@
 `opacity:0` 和 `display:none`，若父节点元素应用了 `opacity:0` 和 `display:none`，无论其子孙元素如何挣扎都不会再出现在大众视野；
 而若父节点元素应用 `visibility:hidden`，子孙元素应用 `visibility:visible`，那么其就会毫无意外的显现出来。
 
-##### 总结一下：
+##### 总结一下
 
 结构：
 `display:none`: 会让元素完全从渲染树中消失，渲染的时候不占据任何空间, 不能点击，

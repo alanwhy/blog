@@ -45,7 +45,7 @@ npm init --yes
 
 #### npm 注册登录
 
-先去 npm 官网注册账号：https://www.npmjs.com/，或者通过终端命令注册：
+先去 npm 官网注册账号：<https://www.npmjs.com/，或者通过终端命令注册：>
 
 ```bash
 npm adduser
@@ -78,7 +78,7 @@ npm config set registry https://registry.npmjs.org
 
 也可以用 [nrm](https://www.npmjs.com/package/nrm) 来实现常用镜像源的切换
 
-#### 如果要发布一个 beta 包，运行命令：
+#### 如果要发布一个 beta 包，运行命令
 
 ```bash
 npm publish --tag beta

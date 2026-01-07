@@ -6,13 +6,14 @@
  * @Description: 
  * @FilePath: /blog/Vue/Vue2-0生命周期--补习.md
 -->
-######说明
+###### 说明
+
 因为自己对 Vue 生命周期老忘，对有些钩子不是很常用，所以特意再温习一遍，顺便更新文章~借鉴了一位兄台的总结。 ###一张图
 ![vue生命周期.png](https://upload-images.jianshu.io/upload_images/12877063-b47f4db19cd7d849.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###一段代码
+### 一段代码
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,7 +93,7 @@
 </html>
 ```
 
-###一些说明
+### 一些说明
 
 - `beforecreated`：el 和 data 并未初始化
 - `created`:完成了 data 数据的初始化，el 没有 ，可以进行和后台数据的请求，之后一起渲染 DOM，如果请求的数据跟 DOM 没啥关系，可以放到`mounted`中（但是请求是异步，所以体验可能也还好）

@@ -1,4 +1,4 @@
-# remote: Support for password authentication was removed on August 13, 2021.
+# remote: Support for password authentication was removed on August 13, 2021
 
 ## 问题描述
 
@@ -36,7 +36,7 @@
 也可以 把 token 直接添加远程仓库链接中，这样就可以避免同一个仓库每次提交代码都要输入 token 了：
 
 ```shell
-$ git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
+git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
 ```
 
 - `<your_token>`：换成你自己得到的 token

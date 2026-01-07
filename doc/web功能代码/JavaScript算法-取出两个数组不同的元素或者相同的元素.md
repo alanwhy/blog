@@ -1,6 +1,6 @@
-###取出相同的元素
+### 取出相同的元素
 
-```
+```js
 getArrEqual(arr1, arr2) {
     let newArr = [];
     for (let i = 0; i < arr2.length; i++) {
@@ -14,9 +14,9 @@ getArrEqual(arr1, arr2) {
 },
 ```
 
-###取出不同的元素
+### 取出不同的元素
 
-```
+```js
 getArrDifference(arr1, arr2) {
     return arr1.concat(arr2).filter(function(v, i, arr) {
         return arr.indexOf(v) === arr.lastIndexOf(v);

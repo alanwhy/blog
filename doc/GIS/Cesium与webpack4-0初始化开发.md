@@ -11,7 +11,7 @@
 
 2、在文件夹下打开命令行，输入
 
-```
+```shell
 npm init -y
 ```
 
@@ -21,7 +21,7 @@ npm init -y
 
 index.html
 
-```
+```html
 <!DOCTYPE html>
 <html lang="zh">
   <head>
@@ -37,19 +37,19 @@ index.html
 
 index.js
 
-```
+```javascript
 console.log("hello world")
 ```
 
 4、安装并配置 webpack
 
-```
+```shell
 npm i webpack -D
 ```
 
 在项目根目录下创建`webpack.config.js`的文件，并写入配置
 
-```
+```js
 const path = require("path");
 const webpack = require("webpack");
 
@@ -69,13 +69,13 @@ module.exports = {
 
 5、安装并配置 loader
 
-```
+```shell
 npm i style-loader css-loader url-loader -D
 ```
 
 修改配置
 
-```
+```js
 const path = require("path");
 const webpack = require("webpack");
 
@@ -105,13 +105,13 @@ module.exports = {
 
 6、安装并配置 Plugins
 
-```
+```shell
 npm i html-webpack-plugin -D
 ```
 
 并设置模版
 
-```
+```js
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -149,7 +149,7 @@ module.exports = {
 
 在`package.json`中新增脚本
 
-```
+```json
 "scripts": {
     "build": "node_modules/.bin/webpack --config webpack.config.js"
   },
@@ -161,7 +161,7 @@ module.exports = {
 
 输入命令
 
-```
+```shell
 npm run build
 ```
 
@@ -169,13 +169,13 @@ npm run build
 
 9、安装 webpack-dev-server 快速提供开发版本查看
 
-```
+```shell
 npm i webpack-dev-server webpack-cli -D
 ```
 
 在`package.json`中新增脚本
 
-```
+```json
 "scripts": {
     "build": "node_modules/.bin/webpack --config webpack.config.js",
     "start": "node_modules/.bin/webpack-dev-server --config webpack.config.js --open"
@@ -184,7 +184,7 @@ npm i webpack-dev-server webpack-cli -D
 
 在`webpack.config.js`中新增配置
 
-```
+```js
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -223,7 +223,7 @@ module.exports = {
 
 控制台输入
 
-```
+```shell
 npm start
 ```
 
@@ -231,7 +231,7 @@ npm start
 
 10、添加 cesium 到项目中
 
-```
+```shell
 npm i cesium -D
 ```
 
@@ -239,7 +239,7 @@ npm i cesium -D
 
 在`webpack.config.js`中新增配置
 
-```
+```js
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -305,16 +305,14 @@ module.exports = {
 
 引入`copy-webpack-plugin`
 
-```
+```shell
 npm i copy-webpack-plugin -D
 ```
 
 配置`webpack.config.js`
 
-```
-...
+```js
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-...
 
 plugins: [
     new HtmlWebpackPlugin({
@@ -344,15 +342,13 @@ plugins: [
       CESIUM_BASE_URL: JSON.stringify(""),
     }),
   ],
-
-  ...
 ```
 
 12、程序引入 ceisum 的方式
 
 CommonJS
 
-```
+```js
 // 引入整库
 var Cesium = require("cesium/Cesium")
 var viewer = new Cesium.Viewer('cesiumContainer')
@@ -364,7 +360,7 @@ var color = Color.fromRandom()
 
 ES6
 
-```
+```javascript
 // 引入整库
 import Cesium from "cesium/Cesium"
 var viewer = new Cesium.Viewer("cesiumContainer")
@@ -375,13 +371,13 @@ var color = Color.fromRandom()
 
 需要引入资源文件
 
-```
+```js
 require("cesium/Widgets/widgets.css")
 ```
 
 13、最后最后！修改`src/index.js`
 
-```
+```js
 var Cesium = require("cesium/Cesium");
 require("cesium/Widgets/widgets.css");
 

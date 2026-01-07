@@ -6,8 +6,8 @@
 
 1.格式化金钱
 
-```
-const ThousandNum = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+```js
+const ThousandNum = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 const money = ThousandNum(20190214);
 // money => "20,190,214"
 ```
@@ -16,8 +16,8 @@ const money = ThousandNum(20190214);
 
 代替正数的 `Math.floor()`，代替负数的 `Math.ceil()`
 
-```
-const num1 = ~~ 1.69;
+```js
+const num1 = ~~1.69;
 const num2 = 1.69 | 0;
 const num3 = 1.69 >> 0;
 // num1 num2 num3 => 1 1 1
@@ -27,7 +27,7 @@ const num3 = 1.69 >> 0;
 
 只对 `null` 、`""` 、`false` 、`数值字符串` 有效
 
-```
+```js
 const num1 = +null;
 const num2 = +"";
 const num3 = +false;
@@ -37,7 +37,7 @@ const num4 = +"169";
 
 4.精确小数
 
-```
+```js
 const RoundNum = (num, decimal) => Math.round(num * 10 ** decimal) / 10 ** decimal;
 const num = RoundNum(1.69, 1);
 // num => 1.7
@@ -45,7 +45,7 @@ const num = RoundNum(1.69, 1);
 
 5.取最小最大值
 
-```
+```js
 const arr = [0, 1, 2];
 const min = Math.min(...arr);
 const max = Math.max(...arr);
@@ -54,10 +54,13 @@ const max = Math.max(...arr);
 
 6.判断数据类型
 
-```
+```js
 function DataType(tgt, type) {
-    const dataType = Object.prototype.toString.call(tgt).replace(/\[object (\w+)\]/, "$1").toLowerCase();
-    return type ? dataType === type : dataType;
+  const dataType = Object.prototype.toString
+    .call(tgt)
+    .replace(/\[object (\w+)\]/, "$1")
+    .toLowerCase();
+  return type ? dataType === type : dataType;
 }
 DataType("young"); // "string"
 DataType(20190214); // "number"
@@ -68,7 +71,7 @@ DataType({}, "array"); // false
 
 7.是否为空对象
 
-```
+```js
 const obj = {};
 const flag = DataType(obj, "object") && !Object.keys(obj).length;
 // flag => true
@@ -76,7 +79,7 @@ const flag = DataType(obj, "object") && !Object.keys(obj).length;
 
 8.克隆数组
 
-```
+```js
 const _arr = [0, 1, 2];
 const arr = [..._arr];
 // arr => [0, 1, 2]
@@ -84,7 +87,7 @@ const arr = [..._arr];
 
 9.合并数组
 
-```
+```js
 const arr1 = [0, 1, 2];
 const arr2 = [3, 4, 5];
 const arr = [...arr1, ...arr2];
@@ -93,14 +96,14 @@ const arr = [...arr1, ...arr2];
 
 10.去重数组
 
-```
+```js
 const arr = [...new Set([0, 1, 1, null, null])];
 // arr => [0, 1, null]
 ```
 
 11.截断数组
 
-```
+```js
 const arr = [0, 1, 2];
 arr.length = 2;
 // arr => [0, 1]
@@ -108,7 +111,7 @@ arr.length = 2;
 
 12.交换赋值
 
-```
+```js
 let a = 0;
 let b = 1;
 [a, b] = [b, a];
@@ -117,14 +120,14 @@ let b = 1;
 
 13.创建指定长度且值相等的数组
 
-```
+```javascript
 const arr = new Array(3).fill(0);
 // arr => [0, 0, 0]
 ```
 
 14.克隆对象
 
-```
+```javascript
 const _obj = { a: 0, b: 1, c: 2 }; // 以下方法任选一种
 const obj = { ..._obj };
 const obj = JSON.parse(JSON.stringify(_obj));
@@ -133,7 +136,7 @@ const obj = JSON.parse(JSON.stringify(_obj));
 
 15.合并对象
 
-```
+```js
 const obj1 = { a: 0, b: 1, c: 2 };
 const obj2 = { c: 3, d: 4, e: 5 };
 const obj = { ...obj1, ...obj2 };
@@ -142,7 +145,7 @@ const obj = { ...obj1, ...obj2 };
 
 16.创建纯空对象
 
-```
+```javascript
 const obj = Object.create(null);
 Object.prototype.a = 0;
 // obj => {}
@@ -150,9 +153,9 @@ Object.prototype.a = 0;
 
 17.优雅处理 Async/Await 参数
 
-```
+```js
 function AsyncTo(promise) {
-    return promise.then(data => [null, data]).catch(err => [err]);
+  return promise.then((data) => [null, data]).catch((err) => [err]);
 }
 const [err, res] = await AsyncTo(Func());
 ```
@@ -161,43 +164,45 @@ const [err, res] = await AsyncTo(Func());
 
 1.路由懒加载
 
-```
-import Vue from 'vue'
-import Router from 'vue-router'
-Vue.use(Router)
+```js
+import Vue from "vue";
+import Router from "vue-router";
+Vue.use(Router);
 
 const router = new Router({
   routes: [
     {
-      path: '/',
-      component: () => import("xxx")
-    }
-]
-})
+      path: "/",
+      component: () => import("xxx"),
+    },
+  ],
+});
 ```
 
 2.页面需要导入多个组件
 
 原来的写法
 
-```
-import titleCom from '@/components/home/titleCom'
-import bannerCom from '@/components/home/bannerCom'
-import cellCom from '@/components/home/cellCom'
-components:{titleCom,bannerCom,cellCom}
+```js
+import titleCom from "@/components/home/titleCom";
+import bannerCom from "@/components/home/bannerCom";
+import cellCom from "@/components/home/cellCom";
+components: {
+  titleCom, bannerCom, cellCom;
+}
 ```
 
 利用 require.context 可以写成
 
-```
-const path = require('path')
-const files = require.context('@/components/home', false, /\.vue$/)
-const modules = {}
-files.keys().forEach(key => {
-  const name = path.basename(key, '.vue')
-  modules[name] = files(key).default || files(key)
-})
-components:modules
+```js
+const path = require("path");
+const files = require.context("@/components/home", false, /\.vue$/);
+const modules = {};
+files.keys().forEach((key) => {
+  const name = path.basename(key, ".vue");
+  modules[name] = files(key).default || files(key);
+});
+components: modules;
 ```
 
 API 说明
@@ -212,13 +217,13 @@ API 说明
 
 做一个 tab 切换时就会涉及到组件动态加载
 
-```
+```html
 <component v-bind:is="currentTabComponent"></component>
 ```
 
 但是这样每次组件都会重新加载,会消耗大量性能,所以 `<keep-alive>` 就起到了作用
 
-```
+```html
 <keep-alive>
   <component v-bind:is="currentTabComponent"></component>
 </keep-alive>
@@ -226,11 +231,11 @@ API 说明
 
 这样切换效果没有动画效果,这个也不用着急,可以利用内置的 `<transition>`
 
-```
+```html
 <transition>
-<keep-alive>
-  <component v-bind:is="currentTabComponent"></component>
-</keep-alive>
+  <keep-alive>
+    <component v-bind:is="currentTabComponent"></component>
+  </keep-alive>
 </transition>
 ```
 
@@ -238,28 +243,28 @@ API 说明
 
 有些组件有些重复的 js 逻辑,如校验手机验证码,解析时间等,mixins 就可以实现这种混入
 
-```
-const mixin={
-    created(){
-      this.dealTime()
+```js
+const mixin = {
+  created() {
+    this.dealTime();
+  },
+  methods: {
+    dealTime() {
+      console.log("这是mixin的dealTime里面的方法");
     },
-    methods:{
-      dealTime(){
-        console.log('这是mixin的dealTime里面的方法');
-      }
-  }
-}
+  },
+};
 
-export default{
-  mixins:[mixin]
-}
+export default {
+  mixins: [mixin],
+};
 ```
 
 5.为路径设置别名
 
 在开发过程中，我们经常需要引入各种文件，如图片、CSS、JS 等，为了避免写很长的相对路径（../），我们可以为不同的目录配置一个别名
 
-```
+```js
 // vue-cli 2.x 配置
 // 在 webpack.base.config.js中的 resolve 配置项，在其 alias 中增加别名
 resolve: {
@@ -289,22 +294,22 @@ module.exports = {
 
 有些时候后台返回图片地址不一定能打开,所以这个时候应该加一张默认图片
 
-```
+```html
 // page 代码
-<img :src="imgUrl" @error="handleError" alt="">
+<img :src="imgUrl" @error="handleError" alt="" />
 <script>
-export default{
-  data(){
-    return{
-      imgUrl:''
-    }
-  },
-  methods:{
-    handleError(e){
-      e.target.src=reqiure('图片路径')
-    }
-  }
-}
+  export default {
+    data() {
+      return {
+        imgUrl: "",
+      };
+    },
+    methods: {
+      handleError(e) {
+        e.target.src = reqiure("图片路径");
+      },
+    },
+  };
 </script>
 ```
 
@@ -312,29 +317,29 @@ export default{
 
 在开发中经常会遇到权限判断的问题，我们又不可能在每一个页面的生命周期中去判断一下，那样太消耗时间了，处理方式：
 
-```
+```js
 router.beforeEach((to, from, next) => {
-  myAccess.checkhaveAccess(to.path) === true ? next() : next('/forbid')
-})
+  myAccess.checkhaveAccess(to.path) === true ? next() : next("/forbid");
+});
 ```
 
 8.路由的项目启动页和 404 页面
 
 404 页面指的是: 当进入一个没有 声明/没有匹配 的路由页面时就会跳转到 404 页面
 
-```
+```js
 export default new Router({
   routes: [
     {
-      path: '/', // 项目启动页
-      redirect:'/login'  // 重定向到下方声明的路由
+      path: "/", // 项目启动页
+      redirect: "/login", // 重定向到下方声明的路由
     },
     {
-      path: '*', // 404 页面
-      component: () => import('./notfind')
+      path: "*", // 404 页面
+      component: () => import("./notfind"),
     },
-  ]
-})
+  ],
+});
 ```
 
 ### CSS 篇
@@ -343,31 +348,18 @@ export default new Router({
 
 [在线演示](https://codepen.io/JowayYoung/pen/ZgxZJa)
 
-```
+```html
 <div class="bruce flex-ct-x">
-	<ul class="justify-text">
-		<li>账号</li>
-		<li>密码</li>
-		<li>电子邮件</li>
-		<li>通讯地址</li>
-	</ul>
+  <ul class="justify-text">
+    <li>账号</li>
+    <li>密码</li>
+    <li>电子邮件</li>
+    <li>通讯地址</li>
+  </ul>
 </div>
 
-.justify-text {
-	li {
-		margin-top: 5px;
-		padding: 0 20px;
-		width: 100px;
-		height: 40px;
-		background-color: #f66;
-		line-height: 40px;
-		text-align-last: justify;
-		color: #fff;
-		&:first-child {
-			margin-top: 0;
-		}
-	}
-}
+.justify-text { li { margin-top: 5px; padding: 0 20px; width: 100px; height: 40px; background-color: #f66; line-height:
+40px; text-align-last: justify; color: #fff; &:first-child { margin-top: 0; } } }
 ```
 
 2.使用 color 改变边框颜色
@@ -376,7 +368,7 @@ export default new Router({
 
 场景：边框颜色与文字颜色相同
 
-```
+```css
 .elem {
   border: 1px solid;
   color: #f66;
@@ -387,13 +379,13 @@ export default new Router({
 
 让你的彩色照片显示黑白照片
 
-```
+```css
 img.desaturate {
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
 }
 ```
 
@@ -405,35 +397,35 @@ img.desaturate {
 
 `background` 引入图片的一个缺点是页面的 Web 可访问性会受到轻微的影响，因为屏幕阅读器和搜索引擎无法正确地获取到图像。这个问题可以通过 CSS `object-fit` 属性解决，到目前为止除了 IE 浏览器其他的浏览器都可以使用 `object-fit`。
 
-```
+```html
 <section>
-    <p>Img element</p>
-    <img src="https://tutorialzine.com/media/2016/08/bicycle.jpg" alt="bicycle">
+  <p>Img element</p>
+  <img src="https://tutorialzine.com/media/2016/08/bicycle.jpg" alt="bicycle" />
 </section>
 
 <section>
-    <p>Div with background image</p>
-    <div></div>
+  <p>Div with background image</p>
+  <div></div>
 </section>
 ```
 
-```
+```css
 img {
-    width: 300px;
-    height: 200px;
+  width: 300px;
+  height: 200px;
 }
 
 div {
-    width: 300px;
-    height: 200px;
-    background: url('https://tutorialzine.com/media/2016/08/bicycle.jpg');
-    background-position: center center;
-    background-size: cover;
+  width: 300px;
+  height: 200px;
+  background: url("https://tutorialzine.com/media/2016/08/bicycle.jpg");
+  background-position: center center;
+  background-size: cover;
 }
 
-section{
-    float: left;
-    margin: 15px;
+section {
+  float: left;
+  margin: 15px;
 }
 ```
 
@@ -441,19 +433,10 @@ section{
 
 css 的选择器并不都是平等的。当初学习 CSS 时，我总是认为选择器会覆盖它上面的所有内容。然而，情况并非如此
 
-```
-<a href='#' id='blue-btn' class="active">按钮</a>
+```html
+<a href="#" id="blue-btn" class="active">按钮</a>
 
-a{
-    color: #fff;
-    padding: 15px;
-}
-a#blue-btn {
-    background-color: blue;
-}
-a.active {
-    background-color: red;
-}
+a{ color: #fff; padding: 15px; } a#blue-btn { background-color: blue; } a.active { background-color: red; }
 ```
 
 我们希望.active 类中设置的样式会生效使按钮变为红色。但是它并不会起作用，因为按钮在上面有一个 ID 选择器，它同样设置了 background-color，ID 选择器具有更高的权重，所以按钮的颜色是蓝色的
@@ -464,23 +447,23 @@ a.active {
 
 在设置根目录的基本字体大小后，例如 html 字体大小：15px；，可以将包含元素的字体大小设置为 rem
 
-```
+```css
 article {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 aside {
-    font-size: .9rem;
+  font-size: 0.9rem;
 }
 ```
 
 将文本元素的字体大小设置为 em
 
-```
+```css
 h2 {
-    font-size: 2em;
+  font-size: 2em;
 }
 p {
-    font-size: 1em;
+  font-size: 1em;
 }
 ```
 

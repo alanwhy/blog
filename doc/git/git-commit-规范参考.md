@@ -10,7 +10,7 @@
 
 它的 message 格式如下:
 
-```
+```shell
 <type>(<scope>): <subject>
 // 空一行
 <body>
@@ -42,7 +42,7 @@ Header 部分只有一行，包括三个字段：type（必需）、scope（可�
 
 对本次 commit 修改内容的具体描述, 可以分为多行。如下所示:
 
-```
+```shell
 # body: 72-character wrapped. This should answer:
 # * Why was this change necessary?
 # * How does it address the problem?

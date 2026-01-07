@@ -420,4 +420,4 @@ with (MyClass.prototype) {
 > [MDN with 关键字](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/with)
 
 > 原文：[# [ECMAScript 6 入门](https://es6.ruanyifeng.com/)
-> ](https://es6.ruanyifeng.com/#docs/symbol)
+> ](<https://es6.ruanyifeng.com/#docs/symbol>)

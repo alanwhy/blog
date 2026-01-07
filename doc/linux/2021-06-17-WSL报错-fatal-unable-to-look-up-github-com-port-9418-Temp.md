@@ -16,7 +16,7 @@
 
 无法更新 github 上的代码，报错如下：
 
-```
+```shell
 fatal: unable to look up github.com (port 9418) (Temporary failure in name resolution)
 ```
 
@@ -35,14 +35,14 @@ Steps that have worked for me:
 1. Boot your distro.
 2.
 
-```
+```bash
 cd ~/../../etc
 ```
 
 3. Create `wsl.conf`, however you see fit. `sudo vim wsl.conf`, `sudo touch wsl.conf` and edit it later, whatever.
 4. Add these lines to `wsl.conf`:
 
-```
+```ini
 [network]
 generateResolvConf=false
 ```
@@ -52,7 +52,7 @@ generateResolvConf=false
    At this point, thanks to wsl.conf, run/resolvconf should no longer exist and will never be created again.
 7.
 
-```
+```bash
 cd ~/../../etc
 ```
 
@@ -60,7 +60,7 @@ cd ~/../../etc
 9. Create a new `resolv.conf`, however you see fit. `sudo vim resolv.conf`, `sudo touch resolv.conf` and edit it later, whatever.
 10. Add this line to `resolv.conf`:
 
-```
+```nginx
 nameserver 8.8.8.8
 ```
 

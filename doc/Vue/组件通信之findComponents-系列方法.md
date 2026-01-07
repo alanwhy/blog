@@ -1,4 +1,4 @@
-###适用场景
+### 适用场景
 
 - 由一个组件，向上找到最近的指定组件；
 - 由一个组件，向上找到所有的指定组件；
@@ -6,8 +6,8 @@
 - 由一个组件，向下找到所有指定的组件；
 - 由一个组件，找到指定组件的兄弟组件。 ###代码实现 ######向上找到最近的指定组件——findComponentUpward
 
-```
-function findComponentUpward (context, componentName) {
+```js
+function findComponentUpward(context, componentName) {
   let parent = context.$parent;
   let name = parent.$options.name;
 
@@ -22,7 +22,7 @@ export { findComponentUpward };
 
 比如下面的示例，有组件 A 和组件 B，A 是 B 的父组件，在 B 中获取和调用 A 中的数据和方法：
 
-```
+```html
 <!-- component-a.vue -->
 <template>
   <div>
@@ -31,53 +31,51 @@ export { findComponentUpward };
   </div>
 </template>
 <script>
-  import componentB from './component-b.vue';
+  import componentB from "./component-b.vue";
 
   export default {
-    name: 'componentA',
+    name: "componentA",
     components: { componentB },
-    data () {
+    data() {
       return {
-        name: 'Aresn'
-      }
+        name: "Aresn",
+      };
     },
     methods: {
-      sayHello () {
-        console.log('Hello, Vue.js');
-      }
-    }
-  }
+      sayHello() {
+        console.log("Hello, Vue.js");
+      },
+    },
+  };
 </script>
 ```
 
-```
+```html
 <!-- component-b.vue -->
 <template>
-  <div>
-    组件 B
-  </div>
+  <div>组件 B</div>
 </template>
 <script>
-  import { findComponentUpward } from '../utils/assist.js';
+  import { findComponentUpward } from "../utils/assist.js";
 
   export default {
-    name: 'componentB',
-    mounted () {
-      const comA = findComponentUpward(this, 'componentA');
+    name: "componentB",
+    mounted() {
+      const comA = findComponentUpward(this, "componentA");
 
       if (comA) {
-        console.log(comA.name);  // Aresn
-        comA.sayHello();  // Hello, Vue.js
+        console.log(comA.name); // Aresn
+        comA.sayHello(); // Hello, Vue.js
       }
-    }
-  }
+    },
+  };
 </script>
 ```
 
-######向上找到所有的指定组件——findComponentsUpward
+###### 向上找到所有的指定组件——findComponentsUpward
 
-```
-function findComponentsUpward (context, componentName) {
+```js
+function findComponentsUpward(context, componentName) {
   let parents = [];
   const parent = context.$parent;
 
@@ -91,10 +89,10 @@ function findComponentsUpward (context, componentName) {
 export { findComponentsUpward };
 ```
 
-######向下找到最近的指定组件——findComponentDownward
+###### 向下找到最近的指定组件——findComponentDownward
 
-```
-function findComponentDownward (context, componentName) {
+```js
+function findComponentDownward(context, componentName) {
   const childrens = context.$children;
   let children = null;
 
@@ -116,10 +114,10 @@ function findComponentDownward (context, componentName) {
 export { findComponentDownward };
 ```
 
-######向下找到所有指定的组件——findComponentsDownward
+###### 向下找到所有指定的组件——findComponentsDownward
 
-```
-function findComponentsDownward (context, componentName) {
+```js
+function findComponentsDownward(context, componentName) {
   return context.$children.reduce((components, child) => {
     if (child.$options.name === componentName) components.push(child);
     const foundChilds = findComponentsDownward(child, componentName);
@@ -129,14 +127,14 @@ function findComponentsDownward (context, componentName) {
 export { findComponentsDownward };
 ```
 
-######找到指定组件的兄弟组件——findBrothersComponents
+###### 找到指定组件的兄弟组件——findBrothersComponents
 
-```
-function findBrothersComponents (context, componentName, exceptMe = true) {
-  let res = context.$parent.$children.filter(item => {
+```js
+function findBrothersComponents(context, componentName, exceptMe = true) {
+  let res = context.$parent.$children.filter((item) => {
     return item.$options.name === componentName;
   });
-  let index = res.findIndex(item => item._uid === context._uid);
+  let index = res.findIndex((item) => item._uid === context._uid);
   if (exceptMe) res.splice(index, 1);
   return res;
 }

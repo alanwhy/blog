@@ -3,7 +3,7 @@
 在运行某个开发程序的时候，安装依赖
 
 ```shell
-$ npm install
+npm install
 ```
 
 报错：
@@ -15,10 +15,10 @@ wasm code commit Allocation failed - process out of memory
 解决方式
 
 ```shell
-$ nvm uninstall 14
-$ arch -x86_64 zsh
-$ nvm install 14
-$ nvm alias default 14
+nvm uninstall 14
+arch -x86_64 zsh
+nvm install 14
+nvm alias default 14
 ```
 
 删除原来的`node_modules`，重新 `npm install`

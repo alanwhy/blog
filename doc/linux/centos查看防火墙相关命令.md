@@ -1,11 +1,3 @@
-<!--
- * @Author: wuhaoyuan
- * @Date: 2022-07-06 09:22:28
- * @LastEditTime: 2022-07-06 09:57:52
- * @LastEditors: wuhaoyuan
- * @Description: 
- * @FilePath: /blog/linux/centos查看防火墙相关命令.md
--->
 1、查看 firewall 服务状态
 
 systemctl status firewalld
@@ -46,7 +38,8 @@ firewall-cmd --permanent --add-port=80/tcp
 
 firewall-cmd --permanent --remove-port=8080/tcp
 
-#重启防火墙(修改配置后要重启防火墙)
+# 重启防火墙(修改配置后要重启防火墙)
+
 firewall-cmd --reload
 
 # 参数解释

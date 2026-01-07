@@ -56,9 +56,9 @@ f8aebc2a121c89c99190553ac9b3dcc853315182 src/assets/img/login_2.png
 #### 3. 处理记录
 
 ```shell
-#文件可以是文件夹,也可以是文件 ,
-#例如:文件夹的话可以是  /dist.js/
-#例如:文件可以是  static/pdf/build/pdf.worker.js
+# 文件可以是文件夹,也可以是文件 ,
+# 例如:文件夹的话可以是  /dist.js/
+# 例如:文件可以是  static/pdf/build/pdf.worker.js
 git filter-branch --force --index-filter 'git rm -rf --cached --ignore-unmatch 文件' --prune-empty --tag-name-filter cat -- --all
 # 会在项目根目录生成 .git_....文件夹,里面就是改的记录
 # 一次只能处理一个文件/文件夹
@@ -87,9 +87,9 @@ git remote prune origin
 ```shell
 # 进入git服务器-->这个操作需要root权限,不然连文件夹都进不去
 cd /var/opt/gitlab/git-data/repositories
-#根据项目,进入对应的git项目文件夹
+# 根据项目,进入对应的git项目文件夹
 # 进入 项目.git文件,就可以看到和本地的.git目录中一样的目目录了
-#查询git项目大小
+# 查询git项目大小
 git count-objects -vH   # 此时还是旧的大小
 git gc --prune=now  # 清理无效文件
 git count-objects -vH  # 此时就和本地一样,从库减小了

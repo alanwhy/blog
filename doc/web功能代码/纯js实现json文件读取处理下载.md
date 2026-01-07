@@ -10,7 +10,7 @@
 
 ##### 1.模板部分
 
-```
+```html
 <template>
   <div class="style-2to3">
     <el-card class="box-card">
@@ -40,7 +40,7 @@
 
 写在 mounted 中，直接初始化
 
-```
+```javascript
 mounted() {
     const input = document.querySelector('input[type=file]');
     input.addEventListener(
@@ -64,10 +64,9 @@ mounted() {
 
 采用插件 [file-saver](https://www.npmjs.com/package/file-saver) 进行保存
 
-```
+```javascript
 import FileSaver from 'file-saver';
 
-...
 
 saveAs() {
   let name = `transJson_${new Date().getTime()}.json`;

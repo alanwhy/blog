@@ -6,7 +6,8 @@
  * @Description: 
  * @FilePath: /blog/git/git常用命令.md
 -->
-###分支操作
+### 分支操作
+
 git branch 创建分支
 git checkout -b 创建并切换到新建的分支上
 git checkout 切换分支
@@ -46,7 +47,9 @@ git log --graph 查看分支合并图
 git merge --no-ff -m '合并描述' 分支名 不使用 Fast forward 方式合并，采用这种方式合并可以看到合并记录
 git check-ignore -v 文件名 查看忽略规则
 git add -f 文件名 强制将文件提交
-#####git 创建项目仓库
+
+##### git 创建项目仓库
+
 git init 初始化
 git remote add origin url 关联远程仓库
 git pull

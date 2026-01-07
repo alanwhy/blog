@@ -1,7 +1,8 @@
 linux 安装 docker 入门，基于 centos7.7
-#####1、先删除旧的版本(如果没有可以跳过)
 
-```
+##### 1、先删除旧的版本(如果没有可以跳过)
+
+```shell
 $ sudo yum remove docker \
                   docker-client \
                   docker-client-latest \
@@ -12,9 +13,9 @@ $ sudo yum remove docker \
                   docker-engine
 ```
 
-######2、安装必须的依赖
+###### 2、安装必须的依赖
 
-```
+```shell
 $ sudo yum install -y yum-utils \
   device-mapper-persistent-data \
   lvm2
@@ -22,21 +23,21 @@ $ sudo yum install -y yum-utils \
 
 添加 stable 的 Docker-ce 的源：
 
-```
+```shell
 $ sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
 ```
 
-#####3、安装 docker-ce:
+##### 3、安装 docker-ce
 
-```
-$ sudo yum install docker-ce docker-ce-cli containerd.io
+```bash
+sudo yum install docker-ce docker-ce-cli containerd.io
 ```
 
-#####4、选择指定的安装版本(可选)
+##### 4、选择指定的安装版本(可选)
 
-```
+```shell
 $ yum list docker-ce --showduplicates | sort -r
 
 docker-ce.x86_64  3:18.09.1-3.el7                     docker-ce-stable
@@ -47,20 +48,20 @@ docker-ce.x86_64  18.06.0.ce-3.el7                    docker-ce-stable
 
 我们来举个例子，比如我们要安装 3:18.09.1-3.el7 这个版本，使用如下命令结构：
 
-```
-$ sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
+```shell
+sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
 ```
 
 命令说明：
 第一部分是 docker-ce，第二部分是版本号 18.09.1，看明白了吗？就是这样子：
 
-```
-$ sudo yum install -y docker-ce-18.09.1 docker-ce-cli-18.09.1
+```shell
+sudo yum install -y docker-ce-18.09.1 docker-ce-cli-18.09.1
 ```
 
-#####5、启动服务并测试一下：
+##### 5、启动服务并测试一下
 
-```
+```shell
 # 启动服务
 sudo systemctl start docker
 
@@ -94,10 +95,11 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 
-#####6、关于升级&删除：
+##### 6、关于升级&删除
+
 升级：
 
-```
+```shell
 # 更新所有
 yum -y update
 
@@ -107,7 +109,7 @@ yum -y update docker-ce docker-ce-cli containerd.io
 
 删除：
 
-```
+```shell
 sudo yum remove docker-ce
 
 # 删除文件系统

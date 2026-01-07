@@ -1,14 +1,8 @@
-<!--
- * @Author: wuhaoyuan
- * @Date: 2022-07-06 09:22:29
- * @LastEditTime: 2022-07-06 09:56:06
- * @LastEditors: wuhaoyuan
- * @Description: 
- * @FilePath: /blog/瞎玩玩/windows-在文件夹出打开cmd执行reg.md
--->
+
+
 拷贝如下
 
-```
+```bash
 Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHere]
 @="CMD"

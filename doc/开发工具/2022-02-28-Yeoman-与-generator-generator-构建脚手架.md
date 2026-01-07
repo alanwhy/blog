@@ -12,13 +12,13 @@
 全局安装命令
 
 ```shell
-$ npm install -g yo generator-generator
+npm install -g yo generator-generator
 ```
 
 安装完成后执行
 
 ```shell
-$ yo generator
+yo generator
 ```
 
 会让输入 `name`、`description` 等相关信息
@@ -40,11 +40,7 @@ const yosay = require("yosay");
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
-    this.log(
-      yosay(
-        `Welcome to the perfect ${chalk.red("generator-mm-cli")} generator!`
-      )
-    );
+    this.log(yosay(`Welcome to the perfect ${chalk.red("generator-mm-cli")} generator!`));
 
     // 一些初始化项目的配置
     const prompts = [
@@ -117,11 +113,7 @@ module.exports = class extends Generator {
       "build/rollup.config.prod.js",
     ];
     templates.forEach((item) => {
-      this.fs.copyTpl(
-        this.templatePath(item),
-        this.destinationPath(item),
-        this.props
-      );
+      this.fs.copyTpl(this.templatePath(item), this.destinationPath(item), this.props);
     });
   }
 
