@@ -281,6 +281,7 @@
     - [01-前缀和.md](doc/%E7%AE%97%E6%B3%95%E5%BF%85%E4%BF%AE/01-%E5%89%8D%E7%BC%80%E5%92%8C.md)
     - [JavaScript十大排序必修算法.md](doc/%E7%AE%97%E6%B3%95%E5%BF%85%E4%BF%AE/JavaScript%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E5%BF%85%E4%BF%AE%E7%AE%97%E6%B3%95.md)
     - [js算法-快速排序-Quicksort.md](doc/%E7%AE%97%E6%B3%95%E5%BF%85%E4%BF%AE/js%E7%AE%97%E6%B3%95-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-Quicksort.md)
+    - [算法重点和坑.md](doc/%E7%AE%97%E6%B3%95%E5%BF%85%E4%BF%AE/%E7%AE%97%E6%B3%95%E9%87%8D%E7%82%B9%E5%92%8C%E5%9D%91.md)
   - [网络/](doc/%E7%BD%91%E7%BB%9C/)
     - [2021-11-19-肝完-浏览器工作原理与实践-我总结了这些.md](doc/%E7%BD%91%E7%BB%9C/2021-11-19-%E8%82%9D%E5%AE%8C-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E6%88%91%E6%80%BB%E7%BB%93%E4%BA%86%E8%BF%99%E4%BA%9B.md)
     - [强缓存与协商缓存.md](doc/%E7%BD%91%E7%BB%9C/%E5%BC%BA%E7%BC%93%E5%AD%98%E4%B8%8E%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98.md)
